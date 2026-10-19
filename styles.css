@@ -614,19 +614,6 @@ h1, h2, h3, h4 {
   border-color: rgba(125, 103, 174, 0.35);
 }
 
-.surface-card--glow {
-  position: relative;
-  overflow: hidden;
-}
-
-.surface-card--glow::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 4px;
-  background-image: var(--gradient-brand);
-}
-
 .icon-box {
   display: grid;
   width: 3rem;
