@@ -396,163 +396,303 @@
           </div>
 
           <div style="padding: 0.5rem 1.25rem 1.25rem; overflow-x: auto;">
-            <svg viewBox="0 0 960 416" width="100%" height="auto" role="img" aria-label="Animated KorganoTech Landfill Gas Separation and Automated Cartridge Regeneration Schematic" style="min-width: 540px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;">
+            <svg viewBox="0 0 1060 436" width="100%" height="auto" role="img" aria-label="Animated KorganoTech Landfill Gas Separation, Automated Regeneration, and CO2 Compression Schematic" style="min-width: 640px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;">
               <defs>
-                <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1">
+                <linearGradient id="purpleHeaderGrad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#4a3570" />
                   <stop offset="100%" stop-color="#7d67ae" />
                 </linearGradient>
-                <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="1">
+                <linearGradient id="amberHeaderGrad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#d97706" />
-                  <stop offset="100%" stop-color="#fbbf24" />
+                  <stop offset="100%" stop-color="#f59e0b" />
                 </linearGradient>
-                <linearGradient id="tealGrad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#059669" />
-                  <stop offset="100%" stop-color="#34d399" />
+                <linearGradient id="tealHeaderGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#047857" />
+                  <stop offset="100%" stop-color="#10b981" />
+                </linearGradient>
+                <linearGradient id="co2PipeGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#4a3570" />
+                  <stop offset="100%" stop-color="#7d67ae" />
+                </linearGradient>
+                <linearGradient id="steelGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3b2c5a" />
+                  <stop offset="50%" stop-color="#56437e" />
+                  <stop offset="100%" stop-color="#31234d" />
+                </linearGradient>
+                <linearGradient id="tankGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#382954" />
+                  <stop offset="45%" stop-color="#675394" />
+                  <stop offset="100%" stop-color="#2c1f45" />
+                </linearGradient>
+                <linearGradient id="heatGlowGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(251, 191, 36, 0.32)" />
+                  <stop offset="100%" stop-color="rgba(217, 119, 6, 0.14)" />
                 </linearGradient>
               </defs>
 
               <!-- Background Canvas Frame -->
-              <rect x="16" y="16" width="928" height="384" rx="20" fill="#1b1030" stroke="rgba(197,176,246,0.18)" />
+              <rect x="12" y="12" width="1036" height="412" rx="20" fill="#1b1030" stroke="rgba(197,176,246,0.18)" />
 
               <!-- ============================================================
-                   LAYER 1: PIPES & CONDUITS (Drawn behind boxes for clean joins)
+                   1. FAR LEFT: LANDFILL GAS CLOUD (CH4 + CO2) & INLET ARROW
                    ============================================================ -->
               <g>
-                <!-- Inlet Pipe (Landfill Gas -> Capture Unit) -->
-                <path d="M 184 160 L 252 160" fill="none" stroke="#31224f" stroke-width="14" />
-                <path d="M 184 160 L 252 160" fill="none" stroke="#8e74c4" stroke-width="2" stroke-dasharray="6 4" />
+                <!-- Vapor wisps below cloud -->
+                <path d="M 66 322 Q 88 312 110 320 T 154 316" fill="none" stroke="rgba(197,176,246,0.28)" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M 78 334 Q 102 325 124 332 T 164 328" fill="none" stroke="rgba(197,176,246,0.18)" stroke-width="2" stroke-linecap="round" />
 
-                <!-- Top Output Pipe (Capture Unit -> Recovered Methane) -->
-                <path d="M 468 115 L 568 115 L 568 80 L 676 80" fill="none" stroke="#163b3a" stroke-width="12" stroke-linejoin="round" />
-                <path d="M 468 115 L 568 115 L 568 80 L 676 80" fill="none" stroke="rgba(52, 211, 153, 0.45)" stroke-width="2" stroke-dasharray="6 4" stroke-linejoin="round" />
+                <!-- Stylized Gas Cloud Shape -->
+                <path d="M 58 298
+                         C 34 298, 22 278, 30 258
+                         C 24 238, 40 218, 62 220
+                         C 74 196, 112 194, 130 214
+                         C 152 206, 178 220, 178 244
+                         C 194 252, 194 280, 178 292
+                         C 172 298, 160 298, 148 298 Z"
+                      fill="#291b47" stroke="#c5b0f6" stroke-width="2" />
 
-                <!-- Cartridge Shuttle Conduit (Capture Unit -> Step 3 -> Regeneration) -->
-                <path d="M 350 242 L 350 324 L 466 324" fill="none" stroke="#3b2b28" stroke-width="12" stroke-linejoin="round" />
-                <path d="M 350 242 L 350 324 L 466 324" fill="none" stroke="rgba(251, 191, 36, 0.45)" stroke-width="2" stroke-dasharray="6 4" stroke-linejoin="round" />
+                <text x="108" y="250" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="800" letter-spacing="0.4">LANDFILL GAS</text>
+                <text x="108" y="272" text-anchor="middle" font-size="13" font-weight="800">
+                  <tspan fill="#34d399">CH₄</tspan>
+                  <tspan fill="rgba(255,255,255,0.65)"> + </tspan>
+                  <tspan fill="#c5b0f6">CO₂</tspan>
+                </text>
 
-                <!-- Regenerated Media Return Loop (Regeneration -> Capture Unit) -->
-                <path d="M 564 268 L 564 205 L 468 205" fill="none" stroke="#c5b0f6" stroke-width="2.5" stroke-dasharray="5 5" stroke-linejoin="round" />
-
-                <!-- Bottom Right Output Pipe (Regeneration -> CO2 Collection) -->
-                <path d="M 686 324 L 802 324 L 802 246" fill="none" stroke="#342554" stroke-width="12" stroke-linejoin="round" />
-                <path d="M 686 324 L 802 324 L 802 246" fill="none" stroke="rgba(197, 176, 246, 0.45)" stroke-width="2" stroke-dasharray="6 4" stroke-linejoin="round" />
-              </g>
-
-              <!-- ============================================================
-                   LAYER 2: ANIMATED GAS PARTICLES (Travel along conduits)
-                   ============================================================ -->
-              <g>
-                <!-- Inlet mixed particles -->
-                <circle r="4.5" fill="#34d399">
-                  <animateMotion dur="2.0s" repeatCount="indefinite" path="M 184 155 L 252 155" />
+                <!-- Horizontal Inlet Arrow into Filter Unit -->
+                <path d="M 190 245 L 232 245 L 232 235 L 250 255 L 232 275 L 232 265 L 190 265 Z" fill="#433268" stroke="rgba(197,176,246,0.4)" stroke-width="1.2" />
+                <!-- Animated Inlet Gas Particles -->
+                <circle r="4" fill="#34d399">
+                  <animateMotion dur="1.6s" repeatCount="indefinite" path="M 192 250 L 244 250" />
                 </circle>
-                <circle r="4.5" fill="#fbbf24">
-                  <animateMotion dur="2.0s" begin="0.7s" repeatCount="indefinite" path="M 184 165 L 252 165" />
-                </circle>
-                <circle r="4.5" fill="#34d399">
-                  <animateMotion dur="2.0s" begin="1.35s" repeatCount="indefinite" path="M 184 158 L 252 158" />
-                </circle>
-
-                <!-- Purified CH4 flowing to Output 1 -->
-                <circle r="5" fill="#34d399">
-                  <animateMotion dur="2.6s" repeatCount="indefinite" path="M 468 115 L 568 115 L 568 80 L 676 80" />
-                </circle>
-                <circle r="5" fill="#34d399">
-                  <animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M 468 115 L 568 115 L 568 80 L 676 80" />
-                </circle>
-
-                <!-- Captured CO2 moving to Regeneration -->
-                <circle r="5" fill="#fbbf24">
-                  <animateMotion dur="2.8s" repeatCount="indefinite" path="M 350 242 L 350 324 L 466 324" />
-                </circle>
-
-                <!-- Released CO2 moving to Compression -->
-                <circle r="5" fill="#c5b0f6">
-                  <animateMotion dur="2.5s" begin="0.4s" repeatCount="indefinite" path="M 686 324 L 802 324 L 802 246" />
-                </circle>
-                <circle r="5" fill="#fbbf24">
-                  <animateMotion dur="2.5s" begin="1.65s" repeatCount="indefinite" path="M 686 324 L 802 324 L 802 246" />
+                <circle r="4" fill="#c5b0f6">
+                  <animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M 192 260 L 244 260" />
                 </circle>
               </g>
 
               <!-- ============================================================
-                   LAYER 3: MODULE CARDS & LABELS (Crisp bounds & generous padding)
+                   2. STAGE 1 & 2: CO2 CAPTURE + METHANE RECOVERY UNIT
                    ============================================================ -->
+              <g id="svg-stage-capture" style="cursor: pointer;" data-svg-step="1">
+                <!-- Top Header Pill -->
+                <rect x="232" y="76" width="212" height="46" rx="12" fill="url(#purpleHeaderGrad)" stroke="#c5b0f6" stroke-width="1.5" />
+                <text x="338" y="96" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="800" letter-spacing="0.6">CO₂ CAPTURE +</text>
+                <text x="338" y="113" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="800" letter-spacing="0.6">METHANE RECOVERY</text>
 
-              <!-- 1. INLET: Raw Landfill Gas -->
-              <g>
-                <rect x="36" y="102" width="148" height="116" rx="14" fill="#25183e" stroke="rgba(197,176,246,0.38)" stroke-width="1.5" />
-                <text x="110" y="130" text-anchor="middle" fill="#c5b0f6" font-size="10" font-weight="800" letter-spacing="1">INLET STREAM</text>
-                <text x="110" y="153" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="800">Landfill Gas</text>
-                <text x="110" y="177" text-anchor="middle" fill="#34d399" font-size="11.5" font-weight="700">≈50% CH₄</text>
-                <text x="110" y="196" text-anchor="middle" fill="#fbbf24" font-size="11.5" font-weight="700">≈50% CO₂</text>
-              </g>
-
-              <!-- 2. CENTRAL CAPTURE CHAMBER (Steps 1 & 2) -->
-              <g id="svg-zone-capture">
-                <rect x="252" y="52" width="216" height="190" rx="18" fill="#281a45" stroke="#c5b0f6" stroke-width="2" />
-                <rect x="270" y="68" width="26" height="26" rx="7" fill="url(#purpleGrad)" />
-                <text x="283" y="85" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">1</text>
-                <text x="306" y="81" fill="#ffffff" font-size="13" font-weight="800">CO₂ Capture +</text>
-                <text x="306" y="98" fill="#34d399" font-size="12" font-weight="700">Methane Recovery</text>
-
-                <!-- Active Pleated / Microcapsule Cartridge Stack -->
-                <rect x="270" y="112" width="180" height="26" rx="6" fill="#4a3570" stroke="#c5b0f6" stroke-width="1.25" />
-                <text x="360" y="129" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700">Selective CO₂ Media</text>
-
-                <rect x="270" y="144" width="180" height="26" rx="6" fill="#5b4287" stroke="#c5b0f6" stroke-width="1.25" />
-                <text x="360" y="161" text-anchor="middle" fill="#fde68a" font-size="10.5" font-weight="700">MERV 13 + Sorbent</text>
-
-                <!-- Step 2: Optical Sensor Badge (Generous 180px width) -->
-                <rect x="270" y="180" width="180" height="44" rx="9" fill="#140b24" stroke="#fbbf24" stroke-width="1.5" />
-                <circle cx="288" cy="202" r="5.5" fill="#fbbf24">
-                  <animate attributeName="r" values="4.5;7;4.5" dur="2.2s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="1;0.55;1" dur="2.2s" repeatCount="indefinite" />
+                <!-- Top Recovered Methane Pipe & Green Flame Icon -->
+                <path d="M 306 180 L 306 148 Q 306 138 316 138 L 344 138" fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round" />
+                <polygon points="342,127 360,138 342,149" fill="#34d399" />
+                <!-- Animated Methane Particle Exiting Top -->
+                <circle r="3.5" fill="#a7f3d0">
+                  <animateMotion dur="1.8s" repeatCount="indefinite" path="M 306 180 L 306 138 L 352 138" />
                 </circle>
-                <text x="302" y="199" fill="#fde68a" font-size="9.5" font-weight="800" letter-spacing="0.3">STEP 2 · OPTICAL SENSOR</text>
-                <text x="302" y="214" fill="#ffffff" font-size="9.5" font-weight="600">Purple → Gold Saturation</text>
+
+                <text x="366" y="144" fill="#34d399" font-size="11" font-weight="800" letter-spacing="0.4">RECOVERED</text>
+                <text x="366" y="159" fill="#34d399" font-size="11" font-weight="800" letter-spacing="0.4">METHANE</text>
+
+                <!-- Vector Flame Icon (Matches original deck flame) -->
+                <g transform="translate(436, 122)">
+                  <path d="M 16 2 C 16 2, 30 14, 28 28 C 27 36, 20 42, 14 42 C 6 42, 0 35, 2 25 C 3 19, 8 15, 9 10 C 9 10, 12 15, 11 20 C 14 14, 16 7, 16 2 Z" fill="#10b981" />
+                  <path d="M 15 16 C 15 16, 22 23, 21 31 C 20 36, 17 40, 13 40 C 9 40, 6 36, 8 30 C 9 26, 13 22, 15 16 Z" fill="#a7f3d0" />
+                </g>
+
+                <!-- Filter Housing Support Legs -->
+                <rect x="270" y="330" width="14" height="20" rx="2" fill="#3b2c5a" stroke="#8e74c4" stroke-width="1.2" />
+                <rect x="392" y="330" width="14" height="20" rx="2" fill="#3b2c5a" stroke="#8e74c4" stroke-width="1.2" />
+                <rect x="264" y="346" width="26" height="6" rx="2" fill="#56437e" />
+                <rect x="386" y="346" width="26" height="6" rx="2" fill="#56437e" />
+
+                <!-- Filter Chamber Body -->
+                <rect id="svg-box-capture" x="258" y="182" width="160" height="148" rx="10" fill="#24173d" stroke="#c5b0f6" stroke-width="2.2" />
+                <!-- Top & Bottom Flanged Caps -->
+                <rect x="250" y="178" width="176" height="14" rx="4" fill="url(#steelGrad)" stroke="#c5b0f6" stroke-width="1.4" />
+                <rect x="250" y="318" width="176" height="14" rx="4" fill="url(#steelGrad)" stroke="#c5b0f6" stroke-width="1.4" />
+
+                <!-- Vertical Pleated Filter Media Ribs -->
+                <g stroke="rgba(197,176,246,0.32)" stroke-width="3" stroke-linecap="round">
+                  <line x1="276" y1="196" x2="276" y2="286" />
+                  <line x1="294" y1="196" x2="294" y2="286" />
+                  <line x1="312" y1="196" x2="312" y2="286" />
+                  <line x1="330" y1="196" x2="330" y2="286" />
+                  <line x1="348" y1="196" x2="348" y2="286" />
+                  <line x1="366" y1="196" x2="366" y2="286" />
+                  <line x1="384" y1="196" x2="384" y2="286" />
+                  <line x1="400" y1="196" x2="400" y2="286" />
+                </g>
+
+                <!-- Captured CO2 Microcapsule Spheres on Pleats -->
+                <circle cx="285" cy="222" r="6.5" fill="#8e74c4" stroke="#ece8f7" stroke-width="1.2" />
+                <circle cx="312" cy="244" r="7.5" fill="#7d67ae" stroke="#ece8f7" stroke-width="1.2" />
+                <circle cx="338" cy="214" r="6" fill="#9f86d6" stroke="#ece8f7" stroke-width="1.2" />
+                <circle cx="356" cy="256" r="7" fill="#7d67ae" stroke="#ece8f7" stroke-width="1.2" />
+                <circle cx="384" cy="228" r="6.5" fill="#9f86d6" stroke="#ece8f7" stroke-width="1.2" />
+                <circle cx="302" cy="272" r="5.5" fill="#8e74c4" stroke="#ece8f7" stroke-width="1.2" />
+                <circle cx="372" cy="272" r="6" fill="#8e74c4" stroke="#ece8f7" stroke-width="1.2" />
+
+                <!-- Step 2: Optical Saturation Sensor Strip inside Housing -->
+                <g id="svg-stage-sensor" data-svg-step="2">
+                  <rect id="svg-box-sensor" x="268" y="290" width="140" height="22" rx="6" fill="#140b24" stroke="#fbbf24" stroke-width="1.4" />
+                  <circle cx="282" cy="301" r="4.5" fill="#fbbf24">
+                    <animate attributeName="r" values="3.5;5.5;3.5" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+                  </circle>
+                  <text x="344" y="305" text-anchor="middle" fill="#fde68a" font-size="9" font-weight="800" letter-spacing="0.4">OPTICAL SENSOR</text>
+                </g>
               </g>
 
-              <!-- STEP 3: Auto Exchange Badge -->
+              <!-- ============================================================
+                   3. STRAIGHT HORIZONTAL CO2 CONDUIT #1 (Filter -> Regeneration)
+                   ============================================================ -->
               <g>
-                <rect x="270" y="262" width="160" height="42" rx="9" fill="#2b1d48" stroke="#c5b0f6" stroke-width="1.5" />
-                <text x="350" y="280" text-anchor="middle" fill="#c5b0f6" font-size="9.5" font-weight="800" letter-spacing="0.4">STEP 3 · AUTO EXCHANGE</text>
-                <text x="350" y="295" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="600">Zero-downtime shuttle</text>
+                <path d="M 424 236 L 502 236 L 502 224 L 526 255 L 502 286 L 502 274 L 424 274 Z" fill="url(#co2PipeGrad)" stroke="#c5b0f6" stroke-width="1.4" />
+                <text x="482" y="260" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">CO₂</text>
+                <!-- Animated CO2 Micro-bubbles flowing straight right -->
+                <circle r="4.5" fill="#ece8f7" opacity="0.9">
+                  <animateMotion dur="1.8s" repeatCount="indefinite" path="M 432 248 L 460 248" />
+                </circle>
+                <circle r="3.5" fill="#c5b0f6" opacity="0.85">
+                  <animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M 432 263 L 460 263" />
+                </circle>
               </g>
 
-              <!-- Media Reused Pill -->
+              <!-- ============================================================
+                   4. STAGE 3 & 4: AUTOMATED REGENERATION (Solar + Rotary Shuttle + Heat)
+                   ============================================================ -->
+              <g id="svg-stage-regen" style="cursor: pointer;" data-svg-step="4">
+                <!-- Sun + Solar Panel Icon Above Header -->
+                <g transform="translate(575, 18)">
+                  <!-- Glowing Sun -->
+                  <circle cx="58" cy="18" r="11" fill="#fbbf24" />
+                  <g stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round">
+                    <line x1="58" y1="1" x2="58" y2="4" />
+                    <line x1="75" y1="18" x2="72" y2="18" />
+                    <line x1="41" y1="18" x2="44" y2="18" />
+                    <line x1="70" y1="6" x2="68" y2="8" />
+                    <line x1="46" y1="6" x2="48" y2="8" />
+                  </g>
+                  <!-- Solar Panel Array -->
+                  <polygon points="18,32 98,32 110,50 6,50" fill="#3b2760" stroke="#c5b0f6" stroke-width="1.5" />
+                  <line x1="12" y1="41" x2="104" y2="41" stroke="rgba(197,176,246,0.55)" stroke-width="1.2" />
+                  <line x1="44" y1="32" x2="40" y2="50" stroke="rgba(197,176,246,0.55)" stroke-width="1.2" />
+                  <line x1="72" y1="32" x2="76" y2="50" stroke="rgba(197,176,246,0.55)" stroke-width="1.2" />
+                </g>
+
+                <!-- Top Header Pill -->
+                <rect x="528" y="76" width="210" height="46" rx="12" fill="url(#amberHeaderGrad)" stroke="#fde68a" stroke-width="1.5" />
+                <text x="633" y="96" text-anchor="middle" fill="#170e29" font-size="11.5" font-weight="800" letter-spacing="0.6">AUTOMATED</text>
+                <text x="633" y="113" text-anchor="middle" fill="#170e29" font-size="11.5" font-weight="800" letter-spacing="0.6">REGENERATION</text>
+
+                <!-- Downward Arrow from Header to Regeneration Chamber -->
+                <line x1="633" y1="122" x2="633" y2="164" stroke="#f59e0b" stroke-width="6" />
+                <polygon points="622,162 633,176 644,162" fill="#fbbf24" />
+
+                <!-- Regeneration Unit Outer Metallic Body -->
+                <rect id="svg-box-regen" x="528" y="182" width="210" height="148" rx="18" fill="#2a1d47" stroke="#fbbf24" stroke-width="2.2" />
+
+                <!-- Left Sub-Unit: Step 3 Rotary Cartridge Exchange Mechanism -->
+                <g id="svg-stage-exchange" data-svg-step="3">
+                  <circle id="svg-box-exchange" cx="588" cy="256" r="46" fill="#1b1030" stroke="#c5b0f6" stroke-width="2.5" />
+                  <!-- Amber/Purple Cartridge Sectors inside Rotary Wheel -->
+                  <path d="M 588 216 A 40 40 0 0 1 624 238 L 608 246 A 22 22 0 0 0 588 234 Z" fill="#f59e0b" />
+                  <path d="M 588 296 A 40 40 0 0 1 552 274 L 568 266 A 22 22 0 0 0 588 278 Z" fill="#d97706" />
+                  <path d="M 552 238 A 40 40 0 0 1 588 216 L 588 234 A 22 22 0 0 0 568 246 Z" fill="#7d67ae" />
+                  <!-- Inner Hub & Rotation Arrows -->
+                  <circle cx="588" cy="256" r="18" fill="#31224f" stroke="#ece8f7" stroke-width="1.5" />
+                  <text x="588" y="261" text-anchor="middle" fill="#fde68a" font-size="14" font-weight="800">↻</text>
+                </g>
+
+                <!-- Right Sub-Unit: Step 4 Thermal Regeneration Oven -->
+                <rect x="648" y="198" width="76" height="116" rx="10" fill="url(#heatGlowGrad)" stroke="#f59e0b" stroke-width="1.8" />
+                <!-- Wavy Thermal Heat Lines Icon -->
+                <g stroke="#fbbf24" stroke-width="3" stroke-linecap="round" fill="none">
+                  <path d="M 668 282 Q 663 268 668 256 T 668 230">
+                    <animate attributeName="opacity" values="0.45;1;0.45" dur="1.8s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M 686 282 Q 681 268 686 256 T 686 230">
+                    <animate attributeName="opacity" values="1;0.45;1" dur="1.8s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M 704 282 Q 699 268 704 256 T 704 230">
+                    <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" begin="0.4s" repeatCount="indefinite" />
+                  </path>
+                </g>
+              </g>
+
+              <!-- ============================================================
+                   5. BOTTOM "REUSE" RETURN LOOP (Regeneration -> Filter Unit)
+                   ============================================================ -->
               <g>
-                <rect x="492" y="192" width="108" height="26" rx="13" fill="#4a3570" stroke="#c5b0f6" stroke-width="1.5" />
-                <text x="546" y="209" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700">↺ Media Reused</text>
+                <path d="M 686 330 L 686 384 Q 686 394 676 394 L 348 394 Q 338 394 338 384 L 338 346"
+                      fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round" />
+                <!-- Upward Arrowhead into Bottom of Filter Unit -->
+                <polygon points="326,350 338,334 350,350" fill="#fbbf24" />
+
+                <text x="512" y="380" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="800" letter-spacing="1.2">REUSE</text>
+
+                <!-- Animated Regenerated Microcapsules Returning Along Bottom Loop -->
+                <circle r="5.5" fill="#fde68a" stroke="#d97706" stroke-width="1.5">
+                  <animateMotion dur="3.2s" repeatCount="indefinite" path="M 686 340 L 686 394 L 338 394 L 338 344" />
+                </circle>
+                <circle r="4.5" fill="#c5b0f6" stroke="#4a3570" stroke-width="1.5">
+                  <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M 686 340 L 686 394 L 338 394 L 338 344" />
+                </circle>
               </g>
 
-              <!-- STEP 4: Automated Regeneration Oven Box (Generous 220px width) -->
-              <g id="svg-zone-regen">
-                <rect x="466" y="268" width="220" height="108" rx="16" fill="#2f2023" stroke="#fbbf24" stroke-width="2" />
-                <rect x="484" y="284" width="26" height="26" rx="7" fill="url(#amberGrad)" />
-                <text x="497" y="301" text-anchor="middle" fill="#170e29" font-size="12" font-weight="800">4</text>
-                <text x="520" y="297" fill="#fde68a" font-size="12.5" font-weight="800">Automated</text>
-                <text x="520" y="313" fill="#ffffff" font-size="12.5" font-weight="800">Regeneration</text>
-                <text x="484" y="339" fill="rgba(255,255,255,0.88)" font-size="10.5" font-weight="600">Low-energy thermal release;</text>
-                <text x="484" y="356" fill="#c5b0f6" font-size="10.5" font-weight="700">sorbent restored (Gold → Purple)</text>
-              </g>
-
-              <!-- TOP RIGHT OUTPUT: Valuable Output #1 (Recovered Methane) -->
+              <!-- ============================================================
+                   6. STRAIGHT HORIZONTAL CO2 CONDUIT #2 (Regeneration -> Compression)
+                   ============================================================ -->
               <g>
-                <rect x="676" y="38" width="252" height="84" rx="14" fill="#143334" stroke="#34d399" stroke-width="2" />
-                <text x="696" y="62" fill="#a6e3d8" font-size="10" font-weight="800" letter-spacing="1">VALUABLE OUTPUT #1</text>
-                <text x="696" y="84" fill="#ffffff" font-size="15.5" font-weight="800">Recovered Methane (CH₄)</text>
-                <text x="696" y="104" fill="#d1fae5" font-size="11" font-weight="600">Purified renewable natural gas / energy</text>
+                <path d="M 738 236 L 814 236 L 814 224 L 838 255 L 814 286 L 814 274 L 738 274 Z" fill="url(#co2PipeGrad)" stroke="#c5b0f6" stroke-width="1.4" />
+                <text x="794" y="260" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">CO₂</text>
+                <!-- Animated CO2 Micro-bubbles flowing straight right -->
+                <circle r="4.5" fill="#ece8f7" opacity="0.9">
+                  <animateMotion dur="1.8s" repeatCount="indefinite" path="M 746 248 L 772 248" />
+                </circle>
+                <circle r="3.5" fill="#c5b0f6" opacity="0.85">
+                  <animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M 746 263 L 772 263" />
+                </circle>
               </g>
 
-              <!-- BOTTOM RIGHT OUTPUT: Valuable Output #2 (CO2 Collection + Compression) -->
+              <!-- ============================================================
+                   7. FAR RIGHT: CO2 COLLECTION + COMPRESSION (Compressor + Tank)
+                   ============================================================ -->
               <g>
-                <rect x="676" y="148" width="252" height="98" rx="14" fill="#2c1d4b" stroke="#c5b0f6" stroke-width="2" />
-                <text x="696" y="173" fill="#fde68a" font-size="10" font-weight="800" letter-spacing="1">VALUABLE OUTPUT #2</text>
-                <text x="696" y="195" fill="#ffffff" font-size="15.5" font-weight="800">CO₂ Collection +</text>
-                <text x="696" y="214" fill="#ffffff" font-size="15.5" font-weight="800">Compression</text>
-                <text x="696" y="233" fill="#ece8f7" font-size="11" font-weight="600">Captured carbon for sequestration/use</text>
+                <!-- Top Header Pill -->
+                <rect x="826" y="76" width="206" height="46" rx="12" fill="url(#tealHeaderGrad)" stroke="#a7f3d0" stroke-width="1.5" />
+                <text x="929" y="96" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="800" letter-spacing="0.6">CO₂ COLLECTION +</text>
+                <text x="929" y="113" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="800" letter-spacing="0.6">COMPRESSION</text>
+
+                <!-- Compressor Motor & Pump Unit (Left of Tank) -->
+                <g>
+                  <!-- Base skid -->
+                  <rect x="842" y="330" width="88" height="10" rx="3" fill="#4a3570" stroke="#c5b0f6" stroke-width="1.2" />
+                  <!-- Finned Motor Body -->
+                  <rect x="846" y="276" width="54" height="54" rx="6" fill="url(#steelGrad)" stroke="#c5b0f6" stroke-width="1.6" />
+                  <line x1="854" y1="288" x2="892" y2="288" stroke="#c5b0f6" stroke-width="2" />
+                  <line x1="854" y1="298" x2="892" y2="298" stroke="#c5b0f6" stroke-width="2" />
+                  <line x1="854" y1="308" x2="892" y2="308" stroke="#c5b0f6" stroke-width="2" />
+                  <line x1="854" y1="318" x2="892" y2="318" stroke="#c5b0f6" stroke-width="2" />
+                  <!-- Pump Volute Cylinder -->
+                  <rect x="900" y="268" width="26" height="62" rx="8" fill="#56437e" stroke="#c5b0f6" stroke-width="1.6" />
+                  <!-- High-Pressure Feed Pipe into Tank -->
+                  <path d="M 913 268 L 913 216 L 946 216" fill="none" stroke="#8e74c4" stroke-width="8" stroke-linejoin="round" />
+                </g>
+
+                <!-- Vertical Pressurized CO2 Storage Tank (Right) -->
+                <g>
+                  <!-- Tank Support Legs -->
+                  <rect x="952" y="328" width="12" height="22" rx="2" fill="#3b2c5a" stroke="#c5b0f6" stroke-width="1.2" />
+                  <rect x="998" y="328" width="12" height="22" rx="2" fill="#3b2c5a" stroke="#c5b0f6" stroke-width="1.2" />
+                  <!-- Top Valve Cap -->
+                  <rect x="973" y="148" width="16" height="12" rx="3" fill="#675394" stroke="#c5b0f6" stroke-width="1.4" />
+                  <!-- Domed Cylinder Body -->
+                  <rect x="944" y="160" width="74" height="172" rx="28" fill="url(#tankGrad)" stroke="#c5b0f6" stroke-width="2" />
+                  <!-- Pressure Gauge Dial -->
+                  <circle cx="981" cy="200" r="13" fill="#ffffff" stroke="#4a3570" stroke-width="2.5" />
+                  <line x1="981" y1="200" x2="988" y2="193" stroke="#dc2627" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="981" cy="200" r="2" fill="#170e29" />
+                  <!-- CO2 Tank Label Badge -->
+                  <rect x="955" y="236" width="52" height="28" rx="6" fill="#4a3570" stroke="#a6e3d8" stroke-width="1.5" />
+                  <text x="981" y="255" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">CO₂</text>
+                </g>
               </g>
             </svg>
           </div>
@@ -1216,16 +1356,48 @@
   <!-- Interactive UI Script -->
   <script>
     (function () {
-      // 1. Slide 3: 4 Interactive Step Cards
+      // 1. Slide 3: 4 Interactive Step Cards + SVG Subsystem Highlighting
       const stepCards = document.querySelectorAll('.interactive-step-card');
       const liveStepStatus = document.getElementById('live-step-status');
+      const svgBoxes = {
+        '1': document.getElementById('svg-box-capture'),
+        '2': document.getElementById('svg-box-sensor'),
+        '3': document.getElementById('svg-box-exchange'),
+        '4': document.getElementById('svg-box-regen')
+      };
+
+      function activateStep(stepId) {
+        stepCards.forEach((c) => {
+          const isMatch = c.getAttribute('data-step') === stepId;
+          c.classList.toggle('is-active', isMatch);
+          if (isMatch && liveStepStatus) {
+            const desc = c.getAttribute('data-step-desc');
+            if (desc) liveStepStatus.textContent = desc;
+          }
+        });
+        Object.keys(svgBoxes).forEach((key) => {
+          const box = svgBoxes[key];
+          if (!box) return;
+          if (key === stepId) {
+            box.setAttribute('filter', 'url(#nodeGlow)');
+            box.setAttribute('stroke-width', '3');
+          } else {
+            box.removeAttribute('filter');
+            box.setAttribute('stroke-width', key === '1' || key === '4' ? '2.5' : '1.5');
+          }
+        });
+      }
 
       stepCards.forEach((card) => {
         card.addEventListener('click', () => {
-          stepCards.forEach((c) => c.classList.remove('is-active'));
-          card.classList.add('is-active');
-          const desc = card.getAttribute('data-step-desc');
-          if (liveStepStatus && desc) liveStepStatus.textContent = desc;
+          activateStep(card.getAttribute('data-step'));
+        });
+      });
+
+      document.querySelectorAll('[data-svg-step]').forEach((svgGroup) => {
+        svgGroup.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activateStep(svgGroup.getAttribute('data-svg-step'));
         });
       });
 
