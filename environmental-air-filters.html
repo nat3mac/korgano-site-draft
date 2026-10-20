@@ -600,41 +600,48 @@
           </div>
         </div>
 
-        <!-- VIEW 2: 3D Engineering Renders (Cutaway, Shuttling, In-Situ Manifold & Indoor Cabinet) -->
+        <!-- VIEW 2: 3D Engineering Renders & Technical Blueprints (Cutaway, Shuttling, 10-Duct Bank, Site Plan, In-Situ) -->
         <div id="tech-panel-cad-3d" class="media-frame" style="max-width: 70rem; margin-inline: auto; display: none;">
           <div style="padding: 1.25rem 1.5rem; background: var(--night); color: #ffffff; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
             <div>
-              <span class="eyebrow eyebrow--teal">3D Engineering CAD &amp; Photoreal Renders</span>
-              <h3 id="cad-render-title" style="font-size: 1.2rem; font-weight: 800; margin-top: 0.2rem;">
-                Internal Cutaway: Active Filter Chamber, Cartridge Rack &amp; Thermal Regeneration Oven
+              <span class="eyebrow eyebrow--teal">3D Engineering CAD &amp; Installation Blueprints</span>
+              <h3 id="cad-render-title" style="font-size: 1.15rem; font-weight: 800; margin-top: 0.2rem;">
+                Internal Cutaway: Top Manifold Capture Chamber, 4-Cartridge Reserve Rack &amp; Bottom Thermal Regeneration Oven
               </h3>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
-              <button type="button" class="btn btn--outline-light cad-subtab is-active" style="height: 2.25rem; padding: 0 0.875rem; font-size: 0.75rem; background: rgba(255,255,255,0.18);" data-cad-src="assets/renders/cg2/Cutaway.png" data-cad-title="Internal Cutaway: Top Manifold Capture Chamber, 4-Cartridge Reserve Rack &amp; Bottom Thermal Regeneration Oven">
+              <button type="button" class="btn btn--outline-light cad-subtab is-active" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem; background: rgba(255,255,255,0.18);" data-cad-src="assets/renders/cg2/Cutaway.png" data-cad-title="Internal Cutaway: Top Manifold Capture Chamber, 4-Cartridge Reserve Rack &amp; Bottom Thermal Regeneration Oven">
                 1. Manifold Cutaway
               </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.25rem; padding: 0 0.875rem; font-size: 0.75rem;" data-cad-src="assets/renders/cg2/Shuttling.png" data-cad-title="Automated Cartridge Exchange: Vertical Lead-Screw Shuttle Moving Saturated Cartridge to Regeneration">
+              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/cg2/Shuttling.png" data-cad-title="Automated Cartridge Exchange: Vertical Lead-Screw Shuttle Moving Saturated Cartridge to Regeneration">
                 2. Automated Shuttling
               </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.25rem; padding: 0 0.875rem; font-size: 0.75rem;" data-cad-src="assets/renders/cg2/In-situ.png" data-cad-title="In-Situ Industrial Deployment: Multi-Pipe Landfill Gas Manifold with Dual CO₂ Collection Cylinders">
-                3. In-Situ Landfill Unit
+              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/active-bank-diagram.png" data-cad-title="10-Duct Active Capture Bank: Modular Duct Array with Optical Sensors, Chemical Indicators &amp; Rail Shuttle Extraction Fork">
+                3. 10-Duct Active Bank
               </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.25rem; padding: 0 0.875rem; font-size: 0.75rem;" data-cad-src="assets/renders/07-device-full-indoor-cabinet-photoreal.png" data-cad-title="Commercial Facility Prototype: Stainless Enclosure with Optical Sensing Window &amp; Cartridge Rack">
-                4. Facility Cabinet
+              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/site-plan-diagram.png" data-cad-title="ASOS-LGM Preliminary Site Plan: 10-Duct Active Capture Bank, Regeneration Vessel, Return Conveyor &amp; CH₄ / CO₂ Storage Tanks">
+                4. ASOS-LGM Site Plan
+              </button>
+              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/cg2/In-situ.png" data-cad-title="In-Situ Industrial Deployment: Multi-Pipe Landfill Gas Manifold with Dual CO₂ Collection Cylinders">
+                5. In-Situ Manifold
+              </button>
+              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/07-device-full-indoor-cabinet-photoreal.png" data-cad-title="Commercial Facility Prototype: Stainless Enclosure with Optical Sensing Window &amp; Cartridge Rack">
+                6. Facility Cabinet
               </button>
             </div>
           </div>
-          <div style="background: #f4f1f9; display: grid; place-items: center; padding: 1.5rem; max-height: 36rem; overflow: hidden;">
+          <div style="background: #ffffff; display: grid; place-items: center; padding: 1.5rem; max-height: 36rem; overflow: hidden;">
             <img
               id="cad-render-img"
+              class="zoomable-media"
               src="assets/renders/cg2/Cutaway.png"
               alt="3D engineering render of the KorganoTech automated CO2 capture and regeneration unit"
-              style="max-height: 33rem; width: auto; border-radius: 1rem; box-shadow: var(--shadow-lift);"
+              style="max-height: 33rem; width: auto; border-radius: 1rem; box-shadow: var(--shadow-card);"
             />
           </div>
           <div class="media-frame__caption">
-            <span><strong>KorganoTech Automated Cartridge Hardware:</strong> Top active capture chamber, middle multi-cartridge reserve bay, vertical shuttle actuator, and bottom thermal regeneration module with CO₂ compression cylinders.</span>
-            <span>3D Engineering Render</span>
+            <span><strong>KorganoTech Engineering Hardware &amp; Site Architecture:</strong> Click any sub-tab above to inspect the 3D manifold cutaway, 10-duct active capture bank, or ASOS-LGM site layout. Click image to zoom.</span>
+            <span>Engineering CAD &amp; Plan View</span>
           </div>
         </div>
 
@@ -692,6 +699,51 @@
               Releases CO₂ for collection; media is reused
             </p>
           </button>
+        </div>
+
+        <!-- Modular Field Scale-Up Blueprints (From Active Bank.ai & Site Plan.ai) -->
+        <div style="max-width: 70rem; margin: 2.5rem auto 0;">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1.25rem;">
+            <div>
+              <span class="eyebrow">Field-Scale Engineering Architecture</span>
+              <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">
+                Modular 10-Duct Active Capture Bank &amp; Autonomous Site Layout
+              </h3>
+            </div>
+            <span class="pill-badge">Click any blueprint to enlarge</span>
+          </div>
+
+          <div class="grid-2">
+            <!-- Left Blueprint: 10-Duct Active Capture Bank -->
+            <div class="media-frame" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="padding: 1.25rem; background: #ffffff; flex: 1; display: grid; place-items: center;">
+                <img
+                  class="zoomable-media"
+                  src="assets/renders/active-bank-diagram.png"
+                  alt="Isometric engineering diagram of KorganoTech's 10-duct Active Capture Bank showing optical sensors, chemical indicators, sliding access hatches, reusable filter cartridges, and rail-mounted shuttle carriage with extraction fork."
+                  style="max-height: 20rem; width: auto;"
+                />
+              </div>
+              <div class="media-frame__caption">
+                <span><strong>10-Duct Active Capture Bank:</strong> Individual duct modules with optical sensors, colorimetric indicators, and 1-axis rail shuttle extraction fork.</span>
+              </div>
+            </div>
+
+            <!-- Right Blueprint: ASOS-LGM Preliminary Site Plan -->
+            <div class="media-frame" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="padding: 1.25rem; background: #ffffff; flex: 1; display: grid; place-items: center;">
+                <img
+                  class="zoomable-media"
+                  src="assets/renders/site-plan-diagram.png"
+                  alt="ASOS-LGM Preliminary Site Layout (Plan View) showing landfill gas wellfield inlet, 10-duct active capture bank, shuttle transfer, regeneration vessel, return conveyor, and CH4 and CO2 storage tanks."
+                  style="max-height: 20rem; width: auto;"
+                />
+              </div>
+              <div class="media-frame__caption">
+                <span><strong>ASOS-LGM Preliminary Site Layout:</strong> Closed-loop cartridge conveyor linking the 10-duct capture bank, vacuum/thermal regeneration vessel, and CH₄ / CO₂ storage tanks.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1058,6 +1110,62 @@
           </article>
         </div>
 
+        <!-- Interactive Landfill Gas Facility Impact Simulator -->
+        <div class="impact-calculator" style="max-width: 72rem; margin-inline: auto;" role="region" aria-label="Interactive Landfill Flow Rate Impact Calculator">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+            <div>
+              <span class="eyebrow eyebrow--teal">Interactive Facility Estimator</span>
+              <h3 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-top: 0.25rem;">
+                Model Your Landfill’s Annual Methane &amp; CO₂ Potential
+              </h3>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+              <button type="button" class="cfm-preset-btn" data-cfm="2500">2,500 CFM (Municipal)</button>
+              <button type="button" class="cfm-preset-btn" data-cfm="7500">7,500 CFM (Regional)</button>
+              <button type="button" class="cfm-preset-btn is-active" data-cfm="15000">15,000 CFM (Orange County)</button>
+              <button type="button" class="cfm-preset-btn" data-cfm="25000">25,000 CFM (Mega-Site)</button>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem; background: rgba(255,255,255,0.06); padding: 1.25rem 1.5rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.12);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;">
+              <label for="cfm-range" style="font-size: 0.9rem; font-weight: 700; color: var(--lilac-highlight);">
+                Facility Landfill-Gas Flow Rate:
+              </label>
+              <span id="calc-cfm-display" style="font-size: 1.5rem; font-weight: 800; color: var(--teal-highlight); font-variant-numeric: tabular-nums;">
+                15,000 CFM
+              </span>
+            </div>
+            <input id="cfm-range" type="range" min="1000" max="25000" step="500" value="15000" class="cfm-slider" />
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(255,255,255,0.55); font-weight: 600;">
+              <span>1,000 CFM</span>
+              <span>7,500 CFM</span>
+              <span>15,000 CFM (OC Benchmark)</span>
+              <span>25,000 CFM</span>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-top: 1.25rem; gap: 1rem;">
+            <div class="hero-glass-card" style="padding: 1.25rem;">
+              <span class="eyebrow eyebrow--light" style="font-size: 0.6875rem;">Modeled Raw Gas Input</span>
+              <p id="calc-raw-scf" style="font-size: 1.85rem; font-weight: 800; color: #ffffff; margin-top: 0.35rem; font-variant-numeric: tabular-nums;">7.88B</p>
+              <span style="font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.7);">scf / yr total landfill gas</span>
+            </div>
+
+            <div class="hero-glass-card" style="padding: 1.25rem; border-color: rgba(251, 191, 36, 0.35);">
+              <span class="eyebrow" style="font-size: 0.6875rem; color: #fde68a;">Recoverable Renewable Methane</span>
+              <p id="calc-ch4-scf" style="font-size: 1.85rem; font-weight: 800; color: #fde68a; margin-top: 0.35rem; font-variant-numeric: tabular-nums;">3.745B</p>
+              <span style="font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.78);">scf / yr renewable energy stream</span>
+            </div>
+
+            <div class="hero-glass-card" style="padding: 1.25rem; border-color: rgba(52, 211, 153, 0.4);">
+              <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Captured Carbon Dioxide</span>
+              <p id="calc-co2-tons" style="font-size: 1.85rem; font-weight: 800; color: var(--teal-highlight); margin-top: 0.35rem; font-variant-numeric: tabular-nums;">186,614</p>
+              <span style="font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.78);">metric tons CO₂ / yr captured</span>
+            </div>
+          </div>
+        </div>
+
         <p class="source-note" style="text-align: center; max-width: 48rem; margin-inline: auto; margin-top: 1.75rem;">
           Countywide screening-model estimates after successful validation and scale-up — not expected output from the initial demonstration.
         </p>
@@ -1399,7 +1507,76 @@
           });
         });
       });
+
+      // 6. Slide 6: Interactive Landfill Gas CFM Impact Calculator
+      const cfmRange = document.getElementById('cfm-range');
+      const cfmDisplay = document.getElementById('calc-cfm-display');
+      const rawScfEl = document.getElementById('calc-raw-scf');
+      const ch4ScfEl = document.getElementById('calc-ch4-scf');
+      const co2TonsEl = document.getElementById('calc-co2-tons');
+      const presetBtns = document.querySelectorAll('.cfm-preset-btn');
+
+      function updateCfmCalc(cfm) {
+        const ratio = cfm / 15000;
+        const rawB = (7.88 * ratio).toFixed(2);
+        const ch4B = (3.745 * ratio).toFixed(3);
+        const co2Tons = Math.round(186614 * ratio).toLocaleString('en-US');
+
+        if (cfmDisplay) cfmDisplay.textContent = Number(cfm).toLocaleString('en-US') + ' CFM';
+        if (rawScfEl) rawScfEl.textContent = rawB + 'B';
+        if (ch4ScfEl) ch4ScfEl.textContent = ch4B + 'B';
+        if (co2TonsEl) co2TonsEl.textContent = co2Tons;
+
+        presetBtns.forEach((b) => {
+          b.classList.toggle('is-active', Number(b.getAttribute('data-cfm')) === Number(cfm));
+        });
+      }
+
+      if (cfmRange) {
+        cfmRange.addEventListener('input', (e) => updateCfmCalc(e.target.value));
+      }
+      presetBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-cfm');
+          if (cfmRange) cfmRange.value = val;
+          updateCfmCalc(val);
+        });
+      });
+
+      // 7. Click-to-Zoom Lightbox for Engineering Blueprints & Renders
+      const lightbox = document.getElementById('diagram-lightbox');
+      const lightboxImg = document.getElementById('diagram-lightbox-img');
+      const lightboxClose = document.getElementById('diagram-lightbox-close');
+
+      document.querySelectorAll('.zoomable-media').forEach((img) => {
+        img.addEventListener('click', () => {
+          if (lightbox && lightboxImg) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('is-open');
+          }
+        });
+      });
+
+      if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox || e.target === lightboxClose) {
+            lightbox.classList.remove('is-open');
+          }
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') lightbox.classList.remove('is-open');
+        });
+      }
     })();
   </script>
+
+  <!-- Full-Screen Diagram Lightbox Modal -->
+  <div id="diagram-lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Enlarged engineering diagram">
+    <div class="lightbox-content">
+      <button type="button" id="diagram-lightbox-close" class="lightbox-close" aria-label="Close enlarged view">✕</button>
+      <img id="diagram-lightbox-img" src="" alt="" />
+    </div>
+  </div>
 </body>
 </html>

@@ -1753,3 +1753,197 @@ h1, h2, h3, h4 {
     animation: none !important;
   }
 }
+
+/* ==========================================================================
+   Interactive Landfill Gas Impact Calculator (Environmental Slide 6)
+   ========================================================================== */
+
+.impact-calculator {
+  margin-top: 2.25rem;
+  border-radius: 1.5rem;
+  background-image: var(--gradient-night);
+  color: #ffffff;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(197, 176, 246, 0.25);
+  box-shadow: var(--shadow-lift);
+}
+
+@media (min-width: 768px) {
+  .impact-calculator {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+.cfm-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.625rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.16);
+  outline: none;
+  margin-block: 1rem;
+  cursor: pointer;
+}
+
+.cfm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 9999px;
+  background: var(--teal-highlight);
+  border: 3px solid var(--night);
+  box-shadow: 0 0 0 4px rgba(166, 227, 216, 0.35), 0 4px 12px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+  transition: transform 0.15s ease;
+}
+
+.cfm-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+.cfm-slider::-moz-range-thumb {
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 9999px;
+  background: var(--teal-highlight);
+  border: 3px solid var(--night);
+  box-shadow: 0 0 0 4px rgba(166, 227, 216, 0.35), 0 4px 12px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+}
+
+.cfm-preset-btn {
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cfm-preset-btn:hover,
+.cfm-preset-btn.is-active {
+  background: var(--brand);
+  border-color: var(--lilac-highlight);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Filtration Technology Comparison Matrix (Pathogen Page)
+   ========================================================================== */
+
+.comparison-table-wrap {
+  overflow-x: auto;
+  border-radius: 1.375rem;
+  border: 1px solid var(--lavender);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 640px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--lavender);
+  font-size: 0.9rem;
+}
+
+.comparison-table thead th {
+  background-color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+}
+
+.comparison-table th.col-korgano,
+.comparison-table td.col-korgano {
+  background-color: #f5f0ff;
+  border-left: 2px solid var(--brand);
+  border-right: 2px solid var(--brand);
+}
+
+.comparison-table thead th.col-korgano {
+  background-image: var(--gradient-brand);
+  color: #ffffff;
+}
+
+.comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   Zoomable Diagram Lightbox Modal
+   ========================================================================== */
+
+.zoomable-media {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.zoomable-media:hover {
+  opacity: 0.96;
+}
+
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(15, 9, 28, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: none;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.lightbox-backdrop.is-open {
+  display: grid;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 92vw;
+  max-height: 88vh;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.lightbox-content img {
+  max-height: 78vh;
+  width: auto;
+  margin-inline: auto;
+  border-radius: 0.75rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: none;
+  background: var(--night);
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-card);
+}
+
