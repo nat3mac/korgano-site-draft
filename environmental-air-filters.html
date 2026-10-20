@@ -153,22 +153,6 @@
                   Explore automated platform
                 </a>
               </div>
-
-              <!-- Mini Hardware Preview Strip -->
-              <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; gap: 1rem;">
-                <img
-                  src="assets/renders/cg2/In-situ.png"
-                  alt="KorganoTech Automated CO2 Capture Manifold Unit"
-                  style="width: 4.25rem; height: 4.25rem; border-radius: 0.875rem; object-fit: cover; border: 1px solid rgba(197, 176, 246, 0.4);"
-                />
-                <div>
-                  <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Continuous Landfill Gas Separation</span>
-                  <p style="font-size: 0.875rem; color: rgba(255,255,255,0.88); margin-top: 0.15rem;">
-                    Selective CO₂ microcapsule cartridges with optical sensing &amp; automated thermal regeneration.
-                    <a href="#technology" style="color: var(--lilac-highlight); font-weight: 700; text-decoration: underline; margin-left: 0.25rem;">View 3D Cutaway →</a>
-                  </p>
-                </div>
-              </div>
             </div>
 
             <!-- Right Column: Slide 1 Key Emissions Metrics with Visual Gauges -->
@@ -233,7 +217,7 @@
       <div class="container-page page-subnav__inner">
         <span class="page-subnav__label">On this page:</span>
         <a href="#climate-urgency" class="page-subnav__link">The Climate Liability</a>
-        <a href="#technology" class="page-subnav__link">Automated Platform &amp; 3D CAD</a>
+        <a href="#technology" class="page-subnav__link">Automated Platform</a>
         <a href="#how-it-works" class="page-subnav__link">How It Works &amp; Sensor</a>
         <a href="#llnl-science" class="page-subnav__link">LLNL Capture Science</a>
         <a href="#case-study" class="page-subnav__link">Orange County Case Study</a>
@@ -379,11 +363,10 @@
 
     <!-- ====================================================================
          SLIDE 3: Technology (One automated platform, two valuable outputs)
-                  + Interactive Live SVG Schematic & 3D CAD Cutaway Explorer
          ==================================================================== -->
     <section id="technology" class="section section--soft" aria-labelledby="tech-title">
       <div class="container-page">
-        <div class="section-header" style="margin-bottom: 2rem;">
+        <div class="section-header" style="margin-bottom: 2.25rem;">
           <p class="eyebrow">Technology</p>
           <h2 id="tech-title" class="section-heading" style="margin-top: 0.5rem;">
             One automated platform, two valuable outputs
@@ -391,39 +374,32 @@
           <p class="section-subtitle">
             Continuous landfill-gas separation combining selective CO₂ microcapsule filters, optical saturation sensing, and automated cartridge regeneration.
           </p>
-
-          <!-- Interactive View Mode Switcher -->
-          <div style="margin-top: 1.75rem; display: flex; justify-content: center;">
-            <div class="view-tabs" role="tablist" aria-label="Platform visualization mode">
-              <button type="button" role="tab" aria-selected="true" class="view-tabs__btn is-active" data-tech-tab="live-svg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                Interactive Live Flow Diagram
-              </button>
-              <button type="button" role="tab" aria-selected="false" class="view-tabs__btn" data-tech-tab="cad-3d">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                3D Hardware &amp; Cutaway Renders
-              </button>
-              <button type="button" role="tab" aria-selected="false" class="view-tabs__btn" data-tech-tab="deck-schematic">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                Original Deck Schematic
-              </button>
-            </div>
-          </div>
         </div>
 
-        <!-- VIEW 1: Interactive Live Animated SVG Process Schematic -->
-        <div id="tech-panel-live-svg" class="media-frame" style="max-width: 70rem; margin-inline: auto; background: var(--night);">
-          <div style="padding: 1.5rem 1.5rem 0.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <!-- Combined Platform Architecture & Interactive Live Flow Showcase -->
+        <div class="media-frame" style="max-width: 70rem; margin-inline: auto; background: var(--night);">
+          <!-- Part 1: Platform Architecture Schematic -->
+          <div style="background: #ffffff; border-bottom: 1px solid rgba(197, 176, 246, 0.22);">
+            <img
+              class="zoomable-media"
+              src="assets/environmental/image3.jpg"
+              alt="Schematic showing Landfill Gas (CH4 + CO2) entering a CO2 Capture and Methane Recovery filter unit, outputting Recovered Methane and sending CO2 through Automated Regeneration to CO2 Collection and Compression, with media reused."
+              style="width: 100%; height: auto;"
+            />
+          </div>
+
+          <!-- Part 2: Interactive Live Animated SVG Process Flow -->
+          <div style="padding: 1.35rem 1.5rem 0.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;">
               <span class="pill-badge pill-badge--dark">
                 <span class="pill-badge__dot"></span>
-                LIVE PROCESS SIMULATION
+                INTERACTIVE LIVE FLOW
               </span>
               <span id="live-step-status" style="font-size: 0.85rem; font-weight: 600; color: var(--lilac-highlight);">
                 Click any step (1–4) below to inspect the active subsystem
               </span>
             </div>
-            <div style="display: flex; gap: 1rem; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8);">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8);">
               <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #34d399;"></span> CH₄ (Recovered Methane)</span>
               <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #fbbf24;"></span> CO₂ (Captured &amp; Compressed)</span>
             </div>
@@ -593,71 +569,13 @@
 
           <div class="media-frame__caption" style="background: #140b24; border-color: rgba(197,176,246,0.18); color: rgba(255,255,255,0.75);">
             <span><strong style="color: #ffffff;">Continuous Dual-Output Architecture:</strong> Landfill Gas (CH₄ + CO₂) → Selective CO₂ Capture &amp; CH₄ Recovery → Automated Regeneration → CO₂ Compression</span>
-            <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Interactive Schematic</span>
+            <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Illustrative schematic (AI-generated)</span>
           </div>
         </div>
 
-        <!-- VIEW 2: 3D Engineering Renders & Technical Blueprints (Cutaway, Shuttling, 10-Duct Bank, Site Plan, In-Situ) -->
-        <div id="tech-panel-cad-3d" class="media-frame" style="max-width: 70rem; margin-inline: auto; display: none;">
-          <div style="padding: 1.25rem 1.5rem; background: var(--night); color: #ffffff; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
-            <div>
-              <span class="eyebrow eyebrow--teal">3D Engineering CAD &amp; Installation Blueprints</span>
-              <h3 id="cad-render-title" style="font-size: 1.15rem; font-weight: 800; margin-top: 0.2rem;">
-                Internal Cutaway: Top Manifold Capture Chamber, 4-Cartridge Reserve Rack &amp; Bottom Thermal Regeneration Oven
-              </h3>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
-              <button type="button" class="btn btn--outline-light cad-subtab is-active" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem; background: rgba(255,255,255,0.18);" data-cad-src="assets/renders/cg2/Cutaway.png" data-cad-title="Internal Cutaway: Top Manifold Capture Chamber, 4-Cartridge Reserve Rack &amp; Bottom Thermal Regeneration Oven">
-                1. Manifold Cutaway
-              </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/cg2/Shuttling.png" data-cad-title="Automated Cartridge Exchange: Vertical Lead-Screw Shuttle Moving Saturated Cartridge to Regeneration">
-                2. Automated Shuttling
-              </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/active-bank-diagram.png" data-cad-title="10-Duct Active Capture Bank: Modular Duct Array with Optical Sensors, Chemical Indicators &amp; Rail Shuttle Extraction Fork">
-                3. 10-Duct Active Bank
-              </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/site-plan-diagram.png" data-cad-title="ASOS-LGM Preliminary Site Plan: 10-Duct Active Capture Bank, Regeneration Vessel, Return Conveyor &amp; CH₄ / CO₂ Storage Tanks">
-                4. ASOS-LGM Site Plan
-              </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/cg2/In-situ.png" data-cad-title="In-Situ Industrial Deployment: Multi-Pipe Landfill Gas Manifold with Dual CO₂ Collection Cylinders">
-                5. In-Situ Manifold
-              </button>
-              <button type="button" class="btn btn--outline-light cad-subtab" style="height: 2.15rem; padding: 0 0.75rem; font-size: 0.75rem;" data-cad-src="assets/renders/07-device-full-indoor-cabinet-photoreal.png" data-cad-title="Commercial Facility Prototype: Stainless Enclosure with Optical Sensing Window &amp; Cartridge Rack">
-                6. Facility Cabinet
-              </button>
-            </div>
-          </div>
-          <div style="background: #ffffff; display: grid; place-items: center; padding: 1.5rem; max-height: 36rem; overflow: hidden;">
-            <img
-              id="cad-render-img"
-              class="zoomable-media"
-              src="assets/renders/cg2/Cutaway.png"
-              alt="3D engineering render of the KorganoTech automated CO2 capture and regeneration unit"
-              style="max-height: 33rem; width: auto; border-radius: 1rem; box-shadow: var(--shadow-card);"
-            />
-          </div>
-          <div class="media-frame__caption">
-            <span><strong>KorganoTech Engineering Hardware &amp; Site Architecture:</strong> Click any sub-tab above to inspect the 3D manifold cutaway, 10-duct active capture bank, or ASOS-LGM site layout. Click image to zoom.</span>
-            <span>Engineering CAD &amp; Plan View</span>
-          </div>
-        </div>
-
-        <!-- VIEW 3: Original Deck Schematic (image3.jpg) -->
-        <div id="tech-panel-deck-schematic" class="media-frame" style="max-width: 70rem; margin-inline: auto; display: none;">
-          <img
-            src="assets/environmental/image3.jpg"
-            alt="Schematic showing Landfill Gas (CH4 + CO2) entering a CO2 Capture and Methane Recovery filter unit, outputting Recovered Methane and sending CO2 through Automated Regeneration to CO2 Collection and Compression, with media reused."
-            style="width: 100%; height: auto;"
-          />
-          <div class="media-frame__caption">
-            <span><strong>Process Architecture:</strong> CO₂ Capture + Methane Recovery → Automated Regeneration → CO₂ Collection + Compression</span>
-            <span>Illustrative schematic (AI-generated)</span>
-          </div>
-        </div>
-
-        <!-- 4 Interactive Step Cards (Clicking highlights corresponding view / CAD render) -->
+        <!-- 4 Interactive Step Cards -->
         <div class="grid-4" style="margin-top: 2rem; max-width: 70rem; margin-inline: auto;">
-          <button type="button" class="interactive-step-card is-active" data-step="1" data-cad-target="assets/renders/cg2/Cutaway.png" data-step-desc="Step 1 Active: Selective CO₂ media filter captures CO₂ as landfill gas flows through while allowing purified CH₄ to pass to recovery.">
+          <button type="button" class="interactive-step-card is-active" data-step="1" data-step-desc="Step 1 Active: Selective CO₂ media filter captures CO₂ as landfill gas flows through while allowing purified CH₄ to pass to recovery.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">1</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Selective CO₂ media filter</h3>
@@ -667,7 +585,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card" data-step="2" data-cad-target="assets/renders/07-device-full-indoor-cabinet-photoreal.png" data-step-desc="Step 2 Active: Optical sensing window detects the colorimetric shift (purple to gold) when the cartridge reaches CO₂ saturation.">
+          <button type="button" class="interactive-step-card" data-step="2" data-step-desc="Step 2 Active: Optical sensing window detects the colorimetric shift (purple to gold) when the cartridge reaches CO₂ saturation.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">2</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Optical sensing</h3>
@@ -677,7 +595,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card" data-step="3" data-cad-target="assets/renders/cg2/Shuttling.png" data-step-desc="Step 3 Active: Automated vertical shuttle swaps the saturated cartridge with a fresh reserve cartridge without interrupting gas flow.">
+          <button type="button" class="interactive-step-card" data-step="3" data-step-desc="Step 3 Active: Automated vertical shuttle swaps the saturated cartridge with a fresh reserve cartridge without interrupting gas flow.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">3</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Automated cartridge exchange</h3>
@@ -687,7 +605,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card" data-step="4" data-cad-target="assets/renders/cg/Cutaway.png" data-step-desc="Step 4 Active: Low-energy thermal regeneration chamber releases pure CO₂ for compression and restores the cartridge media for reuse.">
+          <button type="button" class="interactive-step-card" data-step="4" data-step-desc="Step 4 Active: Low-energy thermal regeneration chamber releases pure CO₂ for compression and restores the cartridge media for reuse.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">4</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Low-energy regeneration</h3>
@@ -696,51 +614,6 @@
               Releases CO₂ for collection; media is reused
             </p>
           </button>
-        </div>
-
-        <!-- Modular Field Scale-Up Blueprints (From Active Bank.ai & Site Plan.ai) -->
-        <div style="max-width: 70rem; margin: 2.5rem auto 0;">
-          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1.25rem;">
-            <div>
-              <span class="eyebrow">Field-Scale Engineering Architecture</span>
-              <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">
-                Modular 10-Duct Active Capture Bank &amp; Autonomous Site Layout
-              </h3>
-            </div>
-            <span class="pill-badge">Click any blueprint to enlarge</span>
-          </div>
-
-          <div class="grid-2">
-            <!-- Left Blueprint: 10-Duct Active Capture Bank -->
-            <div class="media-frame" style="display: flex; flex-direction: column; justify-content: space-between;">
-              <div style="padding: 1.25rem; background: #ffffff; flex: 1; display: grid; place-items: center;">
-                <img
-                  class="zoomable-media"
-                  src="assets/renders/active-bank-diagram.png"
-                  alt="Isometric engineering diagram of KorganoTech's 10-duct Active Capture Bank showing optical sensors, chemical indicators, sliding access hatches, reusable filter cartridges, and rail-mounted shuttle carriage with extraction fork."
-                  style="max-height: 20rem; width: auto;"
-                />
-              </div>
-              <div class="media-frame__caption">
-                <span><strong>10-Duct Active Capture Bank:</strong> Individual duct modules with optical sensors, colorimetric indicators, and 1-axis rail shuttle extraction fork.</span>
-              </div>
-            </div>
-
-            <!-- Right Blueprint: ASOS-LGM Preliminary Site Plan -->
-            <div class="media-frame" style="display: flex; flex-direction: column; justify-content: space-between;">
-              <div style="padding: 1.25rem; background: #ffffff; flex: 1; display: grid; place-items: center;">
-                <img
-                  class="zoomable-media"
-                  src="assets/renders/site-plan-diagram.png"
-                  alt="ASOS-LGM Preliminary Site Layout (Plan View) showing landfill gas wellfield inlet, 10-duct active capture bank, shuttle transfer, regeneration vessel, return conveyor, and CH4 and CO2 storage tanks."
-                  style="max-height: 20rem; width: auto;"
-                />
-              </div>
-              <div class="media-frame__caption">
-                <span><strong>ASOS-LGM Preliminary Site Layout:</strong> Closed-loop cartridge conveyor linking the 10-duct capture bank, vacuum/thermal regeneration vessel, and CH₄ / CO₂ storage tanks.</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -1239,7 +1112,7 @@
                 </span>
                 <div>
                   <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6);">Headquarters</span>
-                  <span>71 E Airway Blvd, Livermore, CA 94551</span>
+                  <span>69 E Airway Blvd, Livermore, CA 94551</span>
                 </div>
               </li>
             </ul>
@@ -1275,7 +1148,7 @@
         </p>
         <address class="site-footer__address">
           <p style="font-weight: 600; color: #ffffff;">KorganoTech</p>
-          <p>71 E Airway Blvd, Livermore, CA 94551</p>
+          <p>69 E Airway Blvd, Livermore, CA 94551</p>
           <p>EPA Establishment Number: 102482-CA-1</p>
           <p>U.S. registered trademark #7565070</p>
         </address>
@@ -1320,17 +1193,6 @@
         </div>
 
         <div>
-          <h3 class="site-footer__col-title">Our Products</h3>
-          <ul class="site-footer__links">
-            <li><a href="https://korgano-tech-web.vercel.app/hvac-air-filters">Traditional HVAC Air Filters</a></li>
-            <li><a href="pathogen-air-filters.html">Pathogen Air Filters</a></li>
-            <li><a href="environmental-air-filters.html">Environmental Air Filters</a></li>
-            <li><a href="https://korgano-tech-web.vercel.app/technology">Technology</a></li>
-            <li><a href="https://korgano-tech-web.vercel.app/technology#applications">Applications</a></li>
-          </ul>
-        </div>
-
-        <div>
           <h3 class="site-footer__col-title">Resources</h3>
           <ul class="site-footer__links">
             <li><a href="https://korgano-tech-web.vercel.app/resources">Learning Center</a></li>
@@ -1364,48 +1226,9 @@
   <!-- Interactive UI Script -->
   <script>
     (function () {
-      // 1. Slide 3: Platform View Switcher Tabs (Live SVG vs 3D CAD vs Original Schematic)
-      const techTabs = document.querySelectorAll('[data-tech-tab]');
-      const panels = {
-        'live-svg': document.getElementById('tech-panel-live-svg'),
-        'cad-3d': document.getElementById('tech-panel-cad-3d'),
-        'deck-schematic': document.getElementById('tech-panel-deck-schematic')
-      };
-
-      function activateTechTab(tabKey) {
-        techTabs.forEach((btn) => {
-          const active = btn.getAttribute('data-tech-tab') === tabKey;
-          btn.classList.toggle('is-active', active);
-          btn.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        Object.keys(panels).forEach((k) => {
-          if (panels[k]) panels[k].style.display = k === tabKey ? 'block' : 'none';
-        });
-      }
-
-      techTabs.forEach((btn) => {
-        btn.addEventListener('click', () => activateTechTab(btn.getAttribute('data-tech-tab')));
-      });
-
-      // 2. Slide 3: 3D CAD Render Subtabs & 4 Interactive Step Cards
-      const cadImg = document.getElementById('cad-render-img');
-      const cadTitle = document.getElementById('cad-render-title');
-      const cadSubtabs = document.querySelectorAll('.cad-subtab');
+      // 1. Slide 3: 4 Interactive Step Cards
       const stepCards = document.querySelectorAll('.interactive-step-card');
       const liveStepStatus = document.getElementById('live-step-status');
-
-      cadSubtabs.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          cadSubtabs.forEach((b) => {
-            b.classList.remove('is-active');
-            b.style.background = 'transparent';
-          });
-          btn.classList.add('is-active');
-          btn.style.background = 'rgba(255,255,255,0.18)';
-          if (cadImg) cadImg.src = btn.getAttribute('data-cad-src');
-          if (cadTitle) cadTitle.textContent = btn.getAttribute('data-cad-title');
-        });
-      });
 
       stepCards.forEach((card) => {
         card.addEventListener('click', () => {
@@ -1413,10 +1236,6 @@
           card.classList.add('is-active');
           const desc = card.getAttribute('data-step-desc');
           if (liveStepStatus && desc) liveStepStatus.textContent = desc;
-          const targetSrc = card.getAttribute('data-cad-target');
-          if (targetSrc && cadImg) {
-            cadImg.src = targetSrc;
-          }
         });
       });
 
