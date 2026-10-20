@@ -1186,6 +1186,8 @@ h1, h2, h3, h4 {
 
 /* Interactive Step Cards (Slide 3 Hardware & Process Explorer) */
 .interactive-step-card {
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
   text-align: left;
   width: 100%;
@@ -1194,19 +1196,74 @@ h1, h2, h3, h4 {
   background-color: var(--surface);
   border: 2px solid var(--lavender);
   box-shadow: var(--shadow-card);
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .interactive-step-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(125, 103, 174, 0.45);
+  border-color: rgba(125, 103, 174, 0.55);
   box-shadow: var(--shadow-lift);
 }
 
 .interactive-step-card.is-active {
+  transform: translateY(-4px);
   border-color: var(--brand);
-  background: linear-gradient(160deg, #ffffff 0%, #f4effe 100%);
-  box-shadow: 0 12px 30px -10px rgba(74, 53, 112, 0.28);
+  background: linear-gradient(160deg, #ffffff 0%, #f1eafd 100%);
+  box-shadow:
+    0 0 0 3px rgba(125, 103, 174, 0.28),
+    0 16px 36px -8px rgba(74, 53, 112, 0.38),
+    0 0 24px rgba(159, 134, 214, 0.35);
+}
+
+.interactive-step-card.is-active .step-badge {
+  background-image: var(--gradient-brand-vibrant);
+  box-shadow: 0 0 16px rgba(125, 103, 174, 0.75);
+  transform: scale(1.06);
+}
+
+/* Auto-cycle timer bar at bottom of active step card */
+.interactive-step-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), var(--brand), #f59e0b);
+  opacity: 0;
+}
+
+.interactive-step-card.is-active::after {
+  opacity: 1;
+  animation: step-timer-progress 4.5s linear forwards;
+}
+
+@keyframes step-timer-progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* SVG Subsystem Highlight & Dimming Transitions */
+.svg-subsystem {
+  transition: opacity 0.45s ease, filter 0.45s ease;
+}
+
+.svg-subsystem.is-dimmed {
+  opacity: 0.3;
+}
+
+.svg-subsystem.is-highlighted {
+  opacity: 1;
+}
+
+.svg-spotlight {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.svg-spotlight.is-visible {
+  opacity: 1;
 }
 
 /* Gas Composition Bar & Molecular Showcase (Slide 2) */
