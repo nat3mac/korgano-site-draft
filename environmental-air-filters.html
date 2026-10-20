@@ -850,24 +850,23 @@
           </p>
         </div>
 
-        <div class="split-layout">
-          <!-- Left: Prototype Cartridge Photo Grid (A, B, C, D) + Active Callout Banner -->
-          <div>
-            <div class="media-frame">
+        <div class="split-layout split-layout--stretch">
+          <!-- Left: Prototype Cartridge Photo Grid (A, B, C, D) + Overlaid Callout Banner -->
+          <div style="display: flex; flex-direction: column;">
+            <div class="media-frame media-frame--overlay-caption">
               <img
                 src="assets/environmental/image4.jpg"
                 alt="Four-panel photograph (A, B, C, D) showing the KorganoTech prototype filter cartridge and central optical sensor window before and after CO2 absorption and heat-assisted regeneration."
-                style="width: 100%; height: auto;"
               />
-              <div class="media-frame__caption" style="background: var(--night); color: #ffffff;">
-                <span id="cartridge-inspector-text"><strong style="color: var(--lilac-highlight);">Panel A Selected:</strong> CO₂ capture media integrated with a MERV 13 particulate layer</span>
-                <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Panels A–D</span>
+              <div class="media-frame__caption media-frame__caption--overlay">
+                <span id="cartridge-inspector-text"><strong style="color: var(--lilac-highlight);">Active Selection:</strong> Panel A: CO₂ capture media integrated with a MERV 13 particulate layer</span>
+                <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem; flex-shrink: 0;">Panels A–D</span>
               </div>
             </div>
           </div>
 
           <!-- Right: Interactive A, B, C, D Selector + Interactive Colorimetric Capsule Simulator -->
-          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
             <div class="grid-2" style="gap: 0.875rem;">
               <button type="button" class="cartridge-callout-btn is-active" data-panel="A" data-panel-text="Panel A: CO₂ capture media integrated with a MERV 13 particulate layer">
                 <span class="step-badge">A</span>
@@ -900,17 +899,17 @@
 
             <!-- Interactive Microcapsule Colorimetric Simulator + Original Strip (image5.jpg) -->
             <div class="capsule-simulator">
-              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.875rem;">
-                <div>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.875rem;">
+                <div style="width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;">
                   <p class="eyebrow">Interactive Colorimetric Sorbent Explorer</p>
-                  <h3 id="capsule-sim-title" style="font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-top: 0.15rem;">
-                    State (a): No CO₂ — Ready for Capture (High pH Purple)
-                  </h3>
+                  <span id="capsule-sim-badge" class="pill-badge" style="background: #f3e8ff; border-color: #d8b4fe; color: #6b21a8;">
+                    <span class="pill-badge__dot" style="background: #8b2d8c;"></span>
+                    Optical Sensor: Ready
+                  </span>
                 </div>
-                <span id="capsule-sim-badge" class="pill-badge" style="background: #f3e8ff; border-color: #d8b4fe; color: #6b21a8;">
-                  <span class="pill-badge__dot" style="background: #8b2d8c;"></span>
-                  Optical Sensor: Ready
-                </span>
+                <h3 id="capsule-sim-title" style="font-size: 1.05rem; font-weight: 800; color: var(--primary); line-height: 1.35;">
+                  State (a): No CO₂ — Ready for Capture (Purple)
+                </h3>
               </div>
 
               <!-- Combined Microscopy Photo + Live SVG Cross-Section -->
@@ -932,8 +931,8 @@
                     <circle cx="42" cy="40" r="10" fill="rgba(255,255,255,0.22)" />
                     <text id="sim-capsule-label" x="55" y="59" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="800">CO₃²⁻</text>
                   </svg>
-                  <span id="sim-capsule-sub" style="font-size: 0.75rem; font-weight: 700; color: var(--muted-foreground); margin-top: 0.25rem;">
-                    Permeable shell + carbonate core
+                  <span id="sim-capsule-sub" class="capsule-simulator__sublabel">
+                    High pH · Unloaded carbonate core
                   </span>
                 </div>
               </div>
