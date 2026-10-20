@@ -379,19 +379,24 @@
         <!-- Interactive Live Flow Showcase -->
         <div class="media-frame" style="max-width: 70rem; margin-inline: auto; background: var(--night);">
           <!-- Interactive Live Animated SVG Process Flow -->
-          <div style="padding: 1.35rem 1.5rem 0.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;">
-              <span class="pill-badge pill-badge--dark">
-                <span class="pill-badge__dot"></span>
-                INTERACTIVE LIVE FLOW
-              </span>
-              <span id="live-step-status" style="font-size: 0.85rem; font-weight: 600; color: var(--lilac-highlight);">
-                Click any step (1–4) below to inspect the active subsystem
-              </span>
+          <div style="padding: 1.35rem 1.5rem 0.5rem; display: flex; flex-direction: column; gap: 0.65rem;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1rem;">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;">
+                <span class="pill-badge pill-badge--dark">
+                  <span class="pill-badge__dot"></span>
+                  INTERACTIVE LIVE FLOW
+                </span>
+                <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff;">
+                  Continuous Dual-Output Architecture
+                </span>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8);">
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #34d399;"></span> CH₄ (Recovered Methane)</span>
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #fbbf24;"></span> CO₂ (Captured &amp; Compressed)</span>
+              </div>
             </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8);">
-              <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #34d399;"></span> CH₄ (Recovered Methane)</span>
-              <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #fbbf24;"></span> CO₂ (Captured &amp; Compressed)</span>
+            <div id="live-step-status" style="font-size: 0.85rem; font-weight: 600; color: var(--lilac-highlight); line-height: 1.45;">
+              Step 1 Active: Selective CO₂ media filter captures CO₂ as landfill gas flows through while allowing purified CH₄ to pass to recovery.
             </div>
           </div>
 
@@ -781,11 +786,6 @@
                 <text x="754" y="155" text-anchor="middle" fill="#fef3c7" font-size="10.5" font-weight="800" letter-spacing="0.6">★ STEP 4: THERMAL REGEN &amp; REUSE</text>
               </g>
             </svg>
-          </div>
-
-          <div class="media-frame__caption" style="background: #140b24; border-color: rgba(197,176,246,0.18); color: rgba(255,255,255,0.75);">
-            <span><strong style="color: #ffffff;">Continuous Dual-Output Architecture:</strong> Landfill Gas (CH₄ + CO₂) → Selective CO₂ Capture &amp; CH₄ Recovery → Automated Regeneration → CO₂ Compression</span>
-            <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Illustrative schematic (AI-generated)</span>
           </div>
         </div>
 
