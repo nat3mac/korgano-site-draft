@@ -175,7 +175,8 @@ h1, h2, h3, h4 {
 
 .announcement-bar__inner {
   display: flex;
-  height: 2.25rem;
+  min-height: 2.25rem;
+  padding-block: 0.35rem;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
@@ -541,16 +542,28 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  height: 3.125rem;
-  padding: 0 1.75rem;
+  min-height: 3.125rem;
+  height: auto;
+  padding: 0.65rem 1.35rem;
   border-radius: 9999px;
   font-family: inherit;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
+  line-height: 1.25;
   font-weight: 600;
-  white-space: nowrap;
+  text-align: center;
+  max-width: 100%;
+  word-break: break-word;
   cursor: pointer;
   border: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+@media (min-width: 640px) {
+  .btn {
+    padding: 0.65rem 1.75rem;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
 }
 
 .btn--primary {
@@ -601,6 +614,7 @@ h1, h2, h3, h4 {
 
 /* Cards & Surfaces */
 .surface-card {
+  min-width: 0;
   background-color: var(--surface);
   border: 1px solid var(--lavender);
   border-radius: 1.375rem;
@@ -612,6 +626,16 @@ h1, h2, h3, h4 {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lift);
   border-color: rgba(125, 103, 174, 0.35);
+}
+
+.card-pad-lg {
+  padding: 1.35rem;
+}
+
+@media (min-width: 640px) {
+  .card-pad-lg {
+    padding: 2.25rem;
+  }
 }
 
 .icon-box {
@@ -670,16 +694,17 @@ h1, h2, h3, h4 {
 .hero-showcase {
   position: relative;
   overflow: hidden;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   background-image: var(--gradient-night);
   color: #ffffff;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.25rem;
   box-shadow: var(--shadow-lift);
   border: 1px solid rgba(197, 176, 246, 0.22);
 }
 
 @media (min-width: 640px) {
   .hero-showcase {
+    border-radius: 2rem;
     padding: 2.75rem 2.5rem;
   }
 }
@@ -708,8 +733,13 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
   align-items: center;
+}
+
+.hero-grid > * {
+  min-width: 0;
 }
 
 @media (min-width: 1024px) {
@@ -719,10 +749,30 @@ h1, h2, h3, h4 {
   }
 }
 
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.hero-stat-value {
+  font-size: clamp(1.85rem, 2.8vw, 2.55rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
 .hero-title {
   margin-top: 1.25rem;
-  font-size: clamp(2.15rem, 4.2vw, 3.45rem);
-  line-height: 1.06;
+  font-size: clamp(1.85rem, 4.2vw, 3.45rem);
+  line-height: 1.08;
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #ffffff;
@@ -730,7 +780,7 @@ h1, h2, h3, h4 {
 
 .hero-lead {
   margin-top: 1.25rem;
-  font-size: clamp(1.025rem, 1.45vw, 1.175rem);
+  font-size: clamp(1rem, 1.45vw, 1.175rem);
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.84);
 }
@@ -749,14 +799,22 @@ h1, h2, h3, h4 {
 
 /* Glassmorphic Hero Cards */
 .hero-glass-card {
+  min-width: 0;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 1.375rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.35);
   transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+@media (min-width: 1280px) {
+  .hero-glass-card {
+    padding: 1.5rem;
+  }
 }
 
 .hero-glass-card:hover {
@@ -869,7 +927,19 @@ h1, h2, h3, h4 {
 /* Grid Helpers */
 .grid-2 {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
+}
+
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > *,
+.split-layout > *,
+.pipeline-grid > *,
+.cta-banner__grid > *,
+.site-footer__main > *,
+.site-footer__cols > * {
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -880,6 +950,7 @@ h1, h2, h3, h4 {
 
 .grid-3 {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
 }
 
@@ -889,8 +960,21 @@ h1, h2, h3, h4 {
   }
 }
 
+.llnl-stats-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 520px) {
+  .llnl-stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .grid-4 {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.25rem;
 }
 
@@ -908,6 +992,7 @@ h1, h2, h3, h4 {
 
 .split-layout {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.5rem;
   align-items: center;
 }
@@ -921,14 +1006,20 @@ h1, h2, h3, h4 {
 
 /* Stat Cards */
 .stat-card {
-  padding: 1.75rem;
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+@media (min-width: 640px) {
+  .stat-card {
+    padding: 1.75rem;
+  }
+}
+
 .stat-card__value {
-  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-size: clamp(2rem, 3.6vw, 3.1rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -954,6 +1045,7 @@ h1, h2, h3, h4 {
 
 /* Media Frames */
 .media-frame {
+  min-width: 0;
   overflow: hidden;
   border-radius: 1.5rem;
   border: 1px solid var(--lavender);
@@ -984,19 +1076,39 @@ h1, h2, h3, h4 {
 
 /* Callout Banner */
 .callout-box {
+  min-width: 0;
   border-radius: 1.25rem;
   border: 1px solid var(--lavender);
-  border-left: 4px solid var(--brand);
   background-color: var(--surface);
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.35rem;
   box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 640px) {
+  .callout-box {
+    padding: 1.25rem 1.5rem;
+  }
 }
 
 .callout-box--night {
   background-color: var(--night);
   border-color: rgba(255, 255, 255, 0.15);
-  border-left: 4px solid var(--lilac-highlight);
   color: #ffffff;
+}
+
+.benchmark-bar__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.2rem 0.75rem;
+  font-size: 0.8125rem;
+  margin-bottom: 0.35rem;
+}
+
+.benchmark-bar__val {
+  white-space: nowrap;
+  font-weight: 800;
 }
 
 /* Numbered Step Badge */
@@ -1022,27 +1134,43 @@ h1, h2, h3, h4 {
 .view-tabs {
   display: inline-flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.375rem;
   padding: 0.375rem;
-  border-radius: 9999px;
+  border-radius: 1.125rem;
   background-color: var(--surface);
   border: 1px solid var(--lavender);
   box-shadow: var(--shadow-card);
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .view-tabs {
+    border-radius: 9999px;
+  }
 }
 
 .view-tabs__btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem 1.125rem;
+  padding: 0.5rem 0.875rem;
   border-radius: 9999px;
   border: none;
   background: transparent;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--muted-foreground);
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .view-tabs__btn {
+    padding: 0.5rem 1.125rem;
+    font-size: 0.8125rem;
+  }
 }
 
 .view-tabs__btn:hover {
@@ -1084,7 +1212,7 @@ h1, h2, h3, h4 {
 /* Gas Composition Bar & Molecular Showcase (Slide 2) */
 .composition-bar {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.5rem;
   border-radius: 1.25rem;
   overflow: hidden;
@@ -1094,14 +1222,26 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-lift);
 }
 
+@media (min-width: 640px) {
+  .composition-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .composition-bar__segment {
   position: relative;
   overflow: hidden;
-  padding: 1.25rem 1.5rem;
+  padding: 1.125rem 1.25rem;
   border-radius: 0.875rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .composition-bar__segment {
+    padding: 1.25rem 1.5rem;
+  }
 }
 
 .composition-bar__segment--ch4 {
@@ -1117,7 +1257,13 @@ h1, h2, h3, h4 {
 .molecule-card {
   position: relative;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1.35rem;
+}
+
+@media (min-width: 640px) {
+  .molecule-card {
+    padding: 2rem;
+  }
 }
 
 .molecule-card__graphic {
@@ -1139,18 +1285,48 @@ h1, h2, h3, h4 {
 
 /* Interactive Colorimetric Microcapsule Simulator (Slide 4) */
 .capsule-simulator {
+  min-width: 0;
   border-radius: 1.375rem;
   border: 1px solid var(--lavender);
   background: linear-gradient(180deg, #ffffff 0%, #f8f5fe 100%);
-  padding: 1.5rem;
+  padding: 1.25rem;
   box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 640px) {
+  .capsule-simulator {
+    padding: 1.5rem;
+  }
+}
+
+.capsule-simulator__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  background: #ffffff;
+  padding: 0.875rem;
+  border-radius: 1rem;
+  border: 1px solid var(--lavender);
+}
+
+@media (min-width: 560px) {
+  .capsule-simulator__stage {
+    grid-template-columns: 1.35fr 1fr;
+  }
 }
 
 .capsule-stage-btns {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.5rem;
   margin-top: 1rem;
+}
+
+@media (min-width: 480px) {
+  .capsule-stage-btns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .capsule-stage-btn {
@@ -1206,7 +1382,13 @@ h1, h2, h3, h4 {
 
 /* LLNL Clustered Bar Chart (Environmental Page Slide 5) */
 .chart-card {
-  padding: 2rem;
+  padding: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .chart-card {
+    padding: 2rem;
+  }
 }
 
 .chart-title {
@@ -1265,21 +1447,28 @@ h1, h2, h3, h4 {
   color: var(--foreground);
   margin-bottom: 0.5rem;
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
   justify-content: space-between;
   align-items: center;
 }
 
 .chart-row {
   display: grid;
-  grid-template-columns: 11.5rem 1fr 3.5rem;
+  grid-template-columns: 11.5rem minmax(0, 1fr) 3rem;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.375rem;
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 639px) {
   .chart-row {
-    grid-template-columns: 7.5rem 1fr 3rem;
+    grid-template-columns: minmax(0, 1fr) 2.75rem;
+    gap: 0.25rem 0.65rem;
+  }
+
+  .chart-row__series {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1322,6 +1511,7 @@ h1, h2, h3, h4 {
 /* Case Study Pipeline Flow (Slide 6) */
 .pipeline-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   align-items: stretch;
 }
@@ -1427,16 +1617,17 @@ h1, h2, h3, h4 {
 .cta-banner {
   position: relative;
   overflow: hidden;
-  border-radius: 1.75rem;
+  border-radius: 1.5rem;
   background-image: var(--gradient-night);
   color: #ffffff;
-  padding: 2.5rem 1.5rem;
+  padding: 1.75rem 1.25rem;
   box-shadow: var(--shadow-lift);
   border: 1px solid rgba(197, 176, 246, 0.2);
 }
 
 @media (min-width: 640px) {
   .cta-banner {
+    border-radius: 1.75rem;
     padding: 3.5rem;
   }
 }
@@ -1445,7 +1636,8 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
   align-items: center;
 }
 
@@ -1457,11 +1649,18 @@ h1, h2, h3, h4 {
 }
 
 .contact-card {
+  min-width: 0;
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 1.25rem;
-  padding: 1.75rem;
+  padding: 1.35rem;
   backdrop-filter: blur(12px);
+}
+
+@media (min-width: 640px) {
+  .contact-card {
+    padding: 1.75rem;
+  }
 }
 
 .contact-list {
@@ -1471,11 +1670,18 @@ h1, h2, h3, h4 {
 }
 
 .contact-list__item {
+  min-width: 0;
   display: flex;
   align-items: flex-start;
   gap: 0.875rem;
   font-size: 0.9375rem;
   color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-list__item > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-list__icon {
@@ -1495,6 +1701,8 @@ h1, h2, h3, h4 {
   text-decoration: underline;
   text-decoration-color: rgba(197, 176, 246, 0.5);
   text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-list__link:hover {
@@ -1870,8 +2078,6 @@ h1, h2, h3, h4 {
 .comparison-table th.col-korgano,
 .comparison-table td.col-korgano {
   background-color: #f5f0ff;
-  border-left: 2px solid var(--brand);
-  border-right: 2px solid var(--brand);
 }
 
 .comparison-table thead th.col-korgano {

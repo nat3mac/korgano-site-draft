@@ -172,37 +172,34 @@
             </div>
 
             <!-- Right Column: Slide 1 Key Emissions Metrics with Visual Gauges -->
-            <div style="display: grid; gap: 1rem;">
-              <div class="grid-2" style="gap: 1rem;">
+            <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem;">
+              <div class="hero-stats-grid">
                 <!-- Card 1: 14.4% -->
                 <article class="hero-glass-card">
-                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
-                    <div>
-                      <span class="eyebrow eyebrow--light">U.S. Landfill Impact</span>
-                      <p style="font-size: clamp(2.25rem, 3.8vw, 3.1rem); font-weight: 800; line-height: 1.05; color: #ffffff; margin-top: 0.35rem;">
-                        14.4%
-                      </p>
-                    </div>
+                  <span class="eyebrow eyebrow--light" style="display: block;">U.S. Landfill Impact</span>
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.35rem;">
+                    <p class="hero-stat-value">
+                      14.4%
+                    </p>
                     <!-- Radial Donut SVG for 14.4% -->
-                    <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink: 0;">
+                    <svg width="52" height="52" viewBox="0 0 64 64" aria-hidden="true" style="flex-shrink: 0;">
                       <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="6"></circle>
                       <circle cx="32" cy="32" r="26" fill="none" stroke="#a6e3d8" stroke-width="6" stroke-linecap="round" stroke-dasharray="23.5 163.3" transform="rotate(-90 32 32)"></circle>
-                      <text x="32" y="36" text-anchor="middle" fill="#a6e3d8" font-size="11" font-weight="800">MSW</text>
+                      <text x="32" y="36" text-anchor="middle" fill="#a6e3d8" font-size="11.5" font-weight="800">MSW</text>
                     </svg>
                   </div>
-                  <p style="margin-top: 0.875rem; font-size: 0.9rem; line-height: 1.55; color: rgba(255, 255, 255, 0.82);">
+                  <p style="margin-top: 0.75rem; font-size: 0.875rem; line-height: 1.55; color: rgba(255, 255, 255, 0.82);">
                     of U.S. human-related methane emissions came from municipal solid waste landfills in 2022.
                   </p>
                 </article>
 
                 <!-- Card 2: >=28x Harmful -->
                 <article class="hero-glass-card hero-glass-card--highlight">
-                  <div>
-                    <span class="eyebrow eyebrow--teal">Heat-Trapping Potency</span>
-                    <p style="font-size: clamp(2.25rem, 3.8vw, 3.1rem); font-weight: 800; line-height: 1.05; color: #ffffff; margin-top: 0.35rem;">
-                      ≥28× <span style="font-size: 1.125rem; font-weight: 700; color: var(--lilac-highlight);">Harmful</span>
-                    </p>
-                  </div>
+                  <span class="eyebrow eyebrow--teal" style="display: block;">Heat-Trapping Potency</span>
+                  <p class="hero-stat-value" style="margin-top: 0.35rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.35rem;">
+                    <span>≥28×</span>
+                    <span style="font-size: 1rem; font-weight: 700; color: var(--lilac-highlight);">Harmful</span>
+                  </p>
                   <!-- Visual 1x vs 28x Bar Comparison -->
                   <div style="margin-top: 0.75rem; display: grid; gap: 0.35rem;" aria-hidden="true">
                     <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: rgba(255,255,255,0.7);">
@@ -216,7 +213,7 @@
                       <span style="font-weight: 700;">28× heat</span>
                     </div>
                   </div>
-                  <p style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.55; color: rgba(255, 255, 255, 0.86);">
+                  <p style="margin-top: 0.75rem; font-size: 0.875rem; line-height: 1.55; color: rgba(255, 255, 255, 0.86);">
                     Methane traps at least 28 times more heat than CO₂ over 100 years, making near-term capture especially valuable.
                   </p>
                 </article>
@@ -309,7 +306,7 @@
                   <text x="47" y="28" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700">28× GWP₁₀₀</text>
                 </svg>
               </div>
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 0.75rem;">
                 <div>
                   <span class="eyebrow">≈50% Methane (CH₄)</span>
                   <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">High-impact methane</h3>
@@ -343,7 +340,7 @@
                   <text x="187" y="28" text-anchor="middle" fill="#c5b0f6" font-size="9.5" font-weight="700">O = C = O</text>
                 </svg>
               </div>
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 0.75rem;">
                 <div>
                   <span class="eyebrow">≈50% Carbon Dioxide (CO₂)</span>
                   <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">Cumulative CO₂</h3>
@@ -433,7 +430,7 @@
           </div>
 
           <div style="padding: 0.5rem 1.25rem 1.25rem; overflow-x: auto;">
-            <svg viewBox="0 0 960 416" width="100%" height="auto" role="img" aria-label="Animated KorganoTech Landfill Gas Separation and Automated Cartridge Regeneration Schematic" style="min-width: 720px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;">
+            <svg viewBox="0 0 960 416" width="100%" height="auto" role="img" aria-label="Animated KorganoTech Landfill Gas Separation and Automated Cartridge Regeneration Schematic" style="min-width: 540px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;">
               <defs>
                 <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#4a3570" />
@@ -828,7 +825,7 @@
               </div>
 
               <!-- Combined Microscopy Photo + Live SVG Cross-Section -->
-              <div style="display: grid; grid-template-columns: 1.35fr 1fr; gap: 1rem; align-items: center; background: #ffffff; padding: 0.875rem; border-radius: 1rem; border: 1px solid var(--lavender);">
+              <div class="capsule-simulator__stage">
                 <div>
                   <img
                     src="assets/environmental/image5.jpg"
@@ -891,7 +888,7 @@
         <div class="split-layout">
           <!-- Left: 3 Key Performance Metrics + Visual Benchmark Comparison -->
           <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1rem;">
+            <div class="llnl-stats-grid">
               <article class="surface-card surface-card--glow stat-card">
                 <p class="stat-card__value">~10×</p>
                 <p class="stat-card__label">
@@ -915,24 +912,24 @@
             </div>
 
             <!-- Visual Benchmark Comparison Card -->
-            <div class="callout-box" style="padding: 1.5rem;">
+            <div class="callout-box">
               <p style="font-size: 1rem; font-weight: 800; color: var(--primary);">
                 Sorbent capacity of 7.1 wt% CO₂ — on par with MEA (6.9 wt%), today's commercial benchmark.
               </p>
-              <div style="margin-top: 1rem; display: grid; gap: 0.625rem;">
+              <div style="margin-top: 1rem; display: grid; gap: 0.75rem;">
                 <div>
-                  <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem;">
+                  <div class="benchmark-bar__header" style="font-weight: 700; color: var(--primary);">
                     <span>Encapsulated Carbonate Microcapsules (LLNL)</span>
-                    <span>7.1 wt% CO₂</span>
+                    <span class="benchmark-bar__val">7.1 wt% CO₂</span>
                   </div>
                   <div class="chart-row__track" style="height: 0.75rem;">
                     <div class="chart-row__fill chart-row__fill--caps" style="width: 92%;"></div>
                   </div>
                 </div>
                 <div>
-                  <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; font-weight: 600; color: var(--muted-foreground); margin-bottom: 0.25rem;">
+                  <div class="benchmark-bar__header" style="font-weight: 600; color: var(--muted-foreground);">
                     <span>Commercial Benchmark: Monoethanolamine (MEA)</span>
-                    <span>6.9 wt% CO₂</span>
+                    <span class="benchmark-bar__val" style="color: var(--primary);">6.9 wt% CO₂</span>
                   </div>
                   <div class="chart-row__track" style="height: 0.75rem;">
                     <div class="chart-row__fill chart-row__fill--neat" style="width: 89%;"></div>
@@ -1127,8 +1124,8 @@
             </div>
           </div>
 
-          <div style="margin-top: 1.25rem; background: rgba(255,255,255,0.06); padding: 1.25rem 1.5rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.12);">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;">
+          <div style="margin-top: 1.25rem; background: rgba(255,255,255,0.06); padding: 1.15rem 1.25rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.12);">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem;">
               <label for="cfm-range" style="font-size: 0.9rem; font-weight: 700; color: var(--lilac-highlight);">
                 Facility Landfill-Gas Flow Rate:
               </label>
@@ -1137,7 +1134,7 @@
               </span>
             </div>
             <input id="cfm-range" type="range" min="1000" max="25000" step="500" value="15000" class="cfm-slider" />
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(255,255,255,0.55); font-weight: 600;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.55); font-weight: 600;">
               <span>1,000 CFM</span>
               <span>7,500 CFM</span>
               <span>15,000 CFM (OC Benchmark)</span>

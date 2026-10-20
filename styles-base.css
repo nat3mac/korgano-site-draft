@@ -746,7 +746,16 @@ h1, h2, h3, h4 {
 /* Grid Helpers */
 .grid-2 {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
+}
+
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > *,
+.split-layout > *,
+.hero-grid > * {
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -757,6 +766,7 @@ h1, h2, h3, h4 {
 
 .grid-3 {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
 }
 
@@ -768,6 +778,7 @@ h1, h2, h3, h4 {
 
 .grid-4 {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.25rem;
 }
 
@@ -785,6 +796,7 @@ h1, h2, h3, h4 {
 
 .split-layout {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.5rem;
   align-items: center;
 }
@@ -861,9 +873,9 @@ h1, h2, h3, h4 {
 
 /* Callout Banner */
 .callout-box {
+  min-width: 0;
   border-radius: 1.25rem;
   border: 1px solid var(--lavender);
-  border-left: 4px solid var(--brand);
   background-color: var(--surface);
   padding: 1.25rem 1.5rem;
   box-shadow: var(--shadow-card);
@@ -872,7 +884,6 @@ h1, h2, h3, h4 {
 .callout-box--night {
   background-color: var(--night);
   border-color: rgba(255, 255, 255, 0.15);
-  border-left: 4px solid var(--lilac-highlight);
   color: #ffffff;
 }
 

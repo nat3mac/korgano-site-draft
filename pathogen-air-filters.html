@@ -167,7 +167,7 @@
             <!-- Slide 1 Visual Comparison: Toggleable Animated GIF + Branded Vector Comparison -->
             <div>
               <div class="hero-glass-card" style="padding: 1rem;">
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem;">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem;">
                   <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Side-by-Side Filtration Concept</span>
                   <div style="display: inline-flex; gap: 0.25rem; background: rgba(0,0,0,0.35); padding: 0.2rem; border-radius: 99px;">
                     <button type="button" class="hero-vis-btn view-tabs__btn is-active" style="padding: 0.25rem 0.65rem; font-size: 0.7rem; color: #fff;" data-hero-vis="gif">Animated Concept</button>
@@ -297,9 +297,9 @@
 
         <div class="grid-2" style="max-width: 68rem; margin-inline: auto;">
           <!-- Card 1: Rising Temperatures -->
-          <article class="surface-card surface-card--interactive surface-card--glow" style="padding: 2.25rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
+          <article class="surface-card surface-card--interactive surface-card--glow card-pad-lg" style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1rem;">
                 <div style="display: flex; align-items: center; gap: 0.875rem;">
                   <span class="icon-box icon-box--brand">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -330,9 +330,9 @@
           </article>
 
           <!-- Card 2: Current Air Filtration Systems -->
-          <article class="surface-card surface-card--interactive surface-card--glow" style="padding: 2.25rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
+          <article class="surface-card surface-card--interactive surface-card--glow card-pad-lg" style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1rem;">
                 <div style="display: flex; align-items: center; gap: 0.875rem;">
                   <span class="icon-box" style="background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -449,7 +449,7 @@
         </div>
 
         <!-- "A Chilling Truth" — Published HEPA Survival Study -->
-        <div class="surface-card" style="margin-top: 2.5rem; padding: 2.25rem; background-color: var(--surface); border-width: 2px; border-color: var(--lavender);">
+        <div class="surface-card card-pad-lg" style="margin-top: 2.5rem; background-color: var(--surface); border-width: 2px; border-color: var(--lavender);">
           <div class="split-layout">
             <div>
               <span class="pill-badge">
@@ -459,7 +459,7 @@
               <h3 style="margin-top: 1rem; font-size: clamp(1.6rem, 2.6vw, 2.25rem); font-weight: 800; color: var(--primary);">
                 A Chilling Truth
               </h3>
-              <blockquote style="margin-top: 1rem; font-size: 1.15rem; font-weight: 700; line-height: 1.55; color: var(--foreground); border-left: 4px solid var(--brand); padding-left: 1.25rem;">
+              <blockquote class="callout-box" style="margin-top: 1rem; font-size: 1.075rem; font-weight: 700; line-height: 1.55; color: var(--foreground); background-color: var(--muted);">
                 “Published research shows that pathogens can remain <span class="text-brand">virulent</span> on traditional air filters for extended periods, facilitating their spread”
               </blockquote>
               <p style="margin-top: 1rem; font-size: 0.9375rem; line-height: 1.65; color: var(--muted-foreground);">
@@ -697,13 +697,15 @@
             </div>
           </div>
 
-          <div class="media-frame" style="background-color: #ffffff; padding: 1.5rem;">
-            <img
-              src="assets/pathogen/image8.jpg"
-              alt="KorganoTech Air Filter product line display showing pleated filters"
-              style="width: 100%; height: auto; border-radius: 0.75rem;"
-            />
-            <div class="media-frame__caption" style="margin: 1rem -1.5rem -1.5rem;">
+          <div class="media-frame" style="background-color: #ffffff;">
+            <div style="padding: 1.25rem;">
+              <img
+                src="assets/pathogen/image8.jpg"
+                alt="KorganoTech Air Filter product line display showing pleated filters"
+                style="width: 100%; height: auto; border-radius: 0.75rem;"
+              />
+            </div>
+            <div class="media-frame__caption">
               <span>KorganoTech Air Filtration Family — Livermore, California</span>
               <a href="https://korgano-tech-web.vercel.app/hvac-air-filters" style="font-weight: 700; color: var(--brand);">View available MERV 11 &amp; 13 filters →</a>
             </div>
