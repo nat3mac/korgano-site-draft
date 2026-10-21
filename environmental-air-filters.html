@@ -854,10 +854,39 @@
           <!-- Left: Prototype Cartridge Photo Grid (A, B, C, D) + Overlaid Callout Banner -->
           <div style="display: flex; flex-direction: column;">
             <div class="media-frame media-frame--overlay-caption">
-              <img
-                src="assets/environmental/image4.jpg"
-                alt="Four-panel photograph (A, B, C, D) showing the KorganoTech prototype filter cartridge and central optical sensor window before and after CO2 absorption and heat-assisted regeneration."
-              />
+              <div class="cartridge-quadrant-grid" role="group" aria-label="Prototype filter cartridge panels A through D">
+                <button type="button" class="cartridge-quadrant is-active" data-quadrant="A" aria-label="Select Panel A: CO2 capture media integrated with a MERV 13 particulate layer">
+                  <span class="cartridge-quadrant__badge">A</span>
+                  <img
+                    src="assets/environmental/panel-a.jpg"
+                    alt="Panel A: CO2 capture media integrated with a MERV 13 particulate layer"
+                  />
+                </button>
+
+                <button type="button" class="cartridge-quadrant" data-quadrant="B" aria-label="Select Panel B: Gas-entry and gas-exit cartridge architecture">
+                  <span class="cartridge-quadrant__badge">B</span>
+                  <img
+                    src="assets/environmental/panel-b.jpg"
+                    alt="Panel B: Gas-entry and gas-exit cartridge architecture"
+                  />
+                </button>
+
+                <button type="button" class="cartridge-quadrant" data-quadrant="C" aria-label="Select Panel C: Visible sensor response after CO2 absorption">
+                  <span class="cartridge-quadrant__badge">C</span>
+                  <img
+                    src="assets/environmental/panel-c.jpg"
+                    alt="Panel C: Visible sensor response after CO2 absorption"
+                  />
+                </button>
+
+                <button type="button" class="cartridge-quadrant" data-quadrant="D" aria-label="Select Panel D: Sensor restored after heat-assisted CO2 removal">
+                  <span class="cartridge-quadrant__badge">D</span>
+                  <img
+                    src="assets/environmental/panel-d.jpg"
+                    alt="Panel D: Sensor restored after heat-assisted CO2 removal"
+                  />
+                </button>
+              </div>
               <div class="media-frame__caption media-frame__caption--overlay">
                 <span id="cartridge-inspector-text"><strong style="color: var(--lilac-highlight);">Active Selection:</strong> Panel A: CO₂ capture media integrated with a MERV 13 particulate layer</span>
                 <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem; flex-shrink: 0;">Panels A–D</span>
@@ -1479,16 +1508,33 @@
         activateStep('1');
         startStepTimer();
 
-        // 3. Slide 4: Cartridge A-D Callout Selector
+        // 3. Slide 4: Cartridge A-D Callout Selector + 4-Quadrant Image Grid Glow
         const calloutBtns = document.querySelectorAll('.cartridge-callout-btn');
+        const quadrantBtns = document.querySelectorAll('.cartridge-quadrant');
         const inspectorText = document.getElementById('cartridge-inspector-text');
+
+        function activateCartridgePanel(panelId) {
+          calloutBtns.forEach((b) => {
+            const isMatch = b.getAttribute('data-panel') === panelId;
+            b.classList.toggle('is-active', isMatch);
+            if (isMatch && inspectorText) {
+              inspectorText.innerHTML = '<strong style="color: var(--lilac-highlight);">Active Selection:</strong> ' + b.getAttribute('data-panel-text');
+            }
+          });
+          quadrantBtns.forEach((q) => {
+            q.classList.toggle('is-active', q.getAttribute('data-quadrant') === panelId);
+          });
+        }
+
         calloutBtns.forEach((btn) => {
           btn.addEventListener('click', () => {
-            calloutBtns.forEach((b) => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
-            if (inspectorText) {
-              inspectorText.innerHTML = '<strong style="color: var(--lilac-highlight);">Active Selection:</strong> ' + btn.getAttribute('data-panel-text');
-            }
+            activateCartridgePanel(btn.getAttribute('data-panel'));
+          });
+        });
+
+        quadrantBtns.forEach((quad) => {
+          quad.addEventListener('click', () => {
+            activateCartridgePanel(quad.getAttribute('data-quadrant'));
           });
         });
 
