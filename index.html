@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#3f2d7a" />
-  <title>KorganoTech — Page Drafts &amp; Client Review Portal</title>
+  <title>KorganoTech — Page Preview &amp; Vendor Code Handoff Portal</title>
   <link rel="icon" href="https://korgano-tech-web.vercel.app/icon.png" type="image/png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="announcement-bar">
     <p class="container-page announcement-bar__inner">
-      <span>KorganoTech Client Staging Preview · Environmental &amp; Pathogen Air Filter Pages</span>
+      <span>KorganoTech Staging Preview &amp; Vendor Handoff · Environmental &amp; Pathogen Air Filter Pages</span>
     </p>
   </div>
 
@@ -23,6 +23,7 @@
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem;">
         <a href="environmental-air-filters.html" class="main-nav__link">Environmental Air Filters</a>
         <a href="pathogen-air-filters.html" class="main-nav__link">Pathogen Air Filters</a>
+        <a href="#code-handoff" class="main-nav__link">&lt;/&gt; Vendor Code Handoff</a>
       </div>
     </div>
   </header>
@@ -32,13 +33,13 @@
       <div class="section-header" style="margin-bottom: 2.5rem;">
         <span class="pill-badge">
           <span class="pill-badge__dot"></span>
-          STAGING REVIEW PORTAL
+          STAGING &amp; VENDOR HANDOFF PORTAL
         </span>
         <h1 class="section-heading" style="margin-top: 0.875rem;">
           KorganoTech Technology Pages
         </h1>
         <p class="section-subtitle">
-          Unified with the main KorganoTech brand identity and built from the client presentation decks. Choose either the <strong>Enhanced</strong> version (with interactive schematics, 3D renders, and molecular visuals) or the <strong>Base</strong> version (strictly using the source deck media).
+          Unified with the main KorganoTech brand identity. Preview the full pages below, or copy the self-contained <code>&lt;main id="main"&gt;...&lt;/main&gt;</code> section code directly for integration into the main site template.
         </p>
       </div>
 
@@ -48,7 +49,7 @@
           <div>
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
               <span class="eyebrow">Page 01 · Climate &amp; Landfill Gas</span>
-              <span class="pill-badge">7 Slides Mapped</span>
+              <span class="pill-badge">Ready for Handoff</span>
             </div>
             <h2 style="font-size: 1.65rem; font-weight: 800; color: var(--primary); margin-top: 0.5rem;">
               Environmental Air Filters
@@ -60,11 +61,11 @@
 
           <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
             <a href="environmental-air-filters.html" class="btn btn--primary">
-              ✨ View Enhanced Draft
+              ✨ View Live Page
             </a>
-            <a href="environmental-air-filters-base.html" class="btn btn--outline">
-              📄 View Base Draft
-            </a>
+            <button type="button" class="btn btn--outline" data-select-handoff="environmental">
+              &lt;/&gt; Copy &lt;main&gt; Code
+            </button>
           </div>
         </article>
 
@@ -85,15 +86,205 @@
 
           <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
             <a href="pathogen-air-filters.html" class="btn btn--primary">
-              ✨ View Enhanced Draft
+              ✨ View Live Page
             </a>
-            <a href="pathogen-air-filters-base.html" class="btn btn--outline">
-              📄 View Base Draft
-            </a>
+            <button type="button" class="btn btn--outline" data-select-handoff="pathogen">
+              &lt;/&gt; Copy &lt;main&gt; Code
+            </button>
           </div>
         </article>
       </div>
+
+      <!-- ====================================================================
+           VENDOR CODE HANDOFF CENTER (<main> Section Direct Copy)
+           ==================================================================== -->
+      <section id="code-handoff" style="max-width: 68rem; margin: 3.5rem auto 0;" aria-labelledby="handoff-heading">
+        <div class="surface-card" style="overflow: hidden; background: var(--night); color: #ffffff; border: 1px solid rgba(197, 176, 246, 0.25); box-shadow: var(--shadow-lift);">
+          <!-- Header & Source Switcher -->
+          <div style="padding: 1.75rem 1.75rem 1.25rem; border-bottom: 1px solid rgba(197, 176, 246, 0.16); display: flex; flex-direction: column; gap: 1.25rem;">
+            <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+              <div>
+                <span class="pill-badge pill-badge--dark">
+                  <span class="pill-badge__dot"></span>
+                  VENDOR INTEGRATION HANDOFF
+                </span>
+                <h2 id="handoff-heading" style="font-size: 1.45rem; font-weight: 800; color: #ffffff; margin-top: 0.65rem;">
+                  Direct <code>&lt;main&gt;</code> Section Code Export
+                </h2>
+                <p style="margin-top: 0.35rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.76); max-width: 44rem; line-height: 1.55;">
+                  Stripped of the site header and footer. Each <code>&lt;main id="main"&gt;...&lt;/main&gt;</code> snippet below is 100% self-contained (including its interactive UI script and lightbox modal) and ready to drop into the production layout alongside <code>styles.css</code> and the <code>assets/</code> folder.
+                </p>
+              </div>
+
+              <div style="display: flex; flex-wrap: wrap; gap: 0.65rem;">
+                <button type="button" id="copy-code-btn" class="btn btn--white" style="padding: 0.65rem 1.15rem; font-size: 0.85rem;">
+                  📋 Copy Code to Clipboard
+                </button>
+                <button type="button" id="download-code-btn" class="btn btn--outline-light" style="padding: 0.65rem 1.15rem; font-size: 0.85rem;">
+                  ⬇ Download Snippet
+                </button>
+              </div>
+            </div>
+
+            <!-- Tabs: Environmental <main> | Pathogen <main> | styles.css -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+              <div class="view-tabs" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(197, 176, 246, 0.22);" role="tablist" aria-label="Select handoff code file">
+                <button type="button" role="tab" aria-selected="true" class="view-tabs__btn is-active" data-handoff-tab="environmental" style="color: #ffffff;">
+                  Environmental &lt;main&gt; HTML
+                </button>
+                <button type="button" role="tab" aria-selected="false" class="view-tabs__btn" data-handoff-tab="pathogen" style="color: rgba(255,255,255,0.8);">
+                  Pathogen &lt;main&gt; HTML
+                </button>
+                <button type="button" role="tab" aria-selected="false" class="view-tabs__btn" data-handoff-tab="styles" style="color: rgba(255,255,255,0.8);">
+                  Shared Stylesheet (styles.css)
+                </button>
+              </div>
+
+              <div id="handoff-meta" style="font-size: 0.78rem; font-weight: 700; color: var(--lilac-highlight); font-variant-numeric: tabular-nums;">
+                Loading live source…
+              </div>
+            </div>
+          </div>
+
+          <!-- Code Viewer Box -->
+          <div style="position: relative; background: #120a21;">
+            <pre style="margin: 0; padding: 1.35rem 1.5rem; max-height: 32rem; overflow: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.8rem; line-height: 1.55; color: #ece8f7; tab-size: 2;"><code id="handoff-code-display">Loading &lt;main&gt; code from live page...</code></pre>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
+
+  <script>
+    (function () {
+      const codeDisplay = document.getElementById('handoff-code-display');
+      const metaDisplay = document.getElementById('handoff-meta');
+      const copyBtn = document.getElementById('copy-code-btn');
+      const downloadBtn = document.getElementById('download-code-btn');
+      const tabBtns = document.querySelectorAll('[data-handoff-tab]');
+      const cardSelectBtns = document.querySelectorAll('[data-select-handoff]');
+
+      const sources = {
+        environmental: {
+          url: 'environmental-air-filters.html',
+          filename: 'environmental-air-filters-main.html',
+          type: 'main',
+          label: 'environmental-air-filters.html (<main id="main">…</main>)'
+        },
+        pathogen: {
+          url: 'pathogen-air-filters.html',
+          filename: 'pathogen-air-filters-main.html',
+          type: 'main',
+          label: 'pathogen-air-filters.html (<main id="main">…</main>)'
+        },
+        styles: {
+          url: 'styles.css',
+          filename: 'styles.css',
+          type: 'raw',
+          label: 'styles.css (Full Stylesheet)'
+        }
+      };
+
+      const cache = {};
+      let activeKey = 'environmental';
+
+      function extractMainSection(htmlText) {
+        const match = htmlText.match(/<main\b[^>]*id=["']main["'][^>]*>[\s\S]*?<\/main>/i);
+        return match ? match[0].trim() : htmlText.trim();
+      }
+
+      async function loadHandoffCode(key) {
+        activeKey = key;
+        const cfg = sources[key];
+        if (!cfg) return;
+
+        tabBtns.forEach((btn) => {
+          const isMatch = btn.getAttribute('data-handoff-tab') === key;
+          btn.classList.toggle('is-active', isMatch);
+          btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+          btn.style.color = isMatch ? '#ffffff' : 'rgba(255,255,255,0.8)';
+        });
+
+        if (!cache[key]) {
+          codeDisplay.textContent = 'Loading ' + cfg.label + '…';
+          try {
+            const res = await fetch(cfg.url, { cache: 'no-cache' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const rawText = await res.text();
+            cache[key] = cfg.type === 'main' ? extractMainSection(rawText) : rawText.trim();
+          } catch (err) {
+            codeDisplay.textContent = 'Unable to fetch ' + cfg.url + ' via file:// protocol. Open via a local or staging HTTP server (e.g. Netlify) to load live source automatically.';
+            metaDisplay.textContent = cfg.label;
+            return;
+          }
+        }
+
+        const snippet = cache[key];
+        codeDisplay.textContent = snippet;
+        const lines = snippet.split('\n').length;
+        const kb = (new Blob([snippet]).size / 1024).toFixed(1);
+        metaDisplay.textContent = cfg.label + ' · ' + lines.toLocaleString() + ' lines (' + kb + ' KB)';
+      }
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          loadHandoffCode(btn.getAttribute('data-handoff-tab'));
+        });
+      });
+
+      cardSelectBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetKey = btn.getAttribute('data-select-handoff');
+          loadHandoffCode(targetKey);
+          const section = document.getElementById('code-handoff');
+          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          const text = cache[activeKey] || codeDisplay.textContent;
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = copyBtn.innerHTML;
+            copyBtn.innerHTML = '✓ Copied to Clipboard!';
+            setTimeout(() => { copyBtn.innerHTML = orig; }, 2200);
+          } catch (e) {
+            const range = document.createRange();
+            range.selectNodeContents(codeDisplay);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        });
+      }
+
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          const cfg = sources[activeKey];
+          const text = cache[activeKey] || '';
+          if (!cfg || !text) return;
+          const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = cfg.filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        });
+      }
+
+      // Check URL query parameter (?page=environmental or ?page=pathogen)
+      const params = new URLSearchParams(window.location.search);
+      const initialPage = params.get('page');
+      if (initialPage && sources[initialPage]) {
+        loadHandoffCode(initialPage);
+      } else {
+        loadHandoffCode('environmental');
+      }
+    })();
+  </script>
 </body>
 </html>

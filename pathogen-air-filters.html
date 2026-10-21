@@ -767,13 +767,84 @@
         </div>
       </div>
     </section>
+
+    <!-- Full-Screen Diagram Lightbox Modal -->
+    <div id="diagram-lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Enlarged scientific diagram">
+      <div class="lightbox-content">
+        <button type="button" id="diagram-lightbox-close" class="lightbox-close" aria-label="Close enlarged view">✕</button>
+        <img id="diagram-lightbox-img" src="" alt="" />
+      </div>
+    </div>
+
+    <!-- Interactive UI Script -->
+    <script>
+      (function () {
+        // 1. Hero Visual Toggle (Animated GIF vs. Branded SVG Nanowire Diagram)
+        const heroBtns = document.querySelectorAll('[data-hero-vis]');
+        const visGif = document.getElementById('hero-vis-gif');
+        const visSvg = document.getElementById('hero-vis-svg');
+
+        heroBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const mode = btn.getAttribute('data-hero-vis');
+            heroBtns.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            if (visGif) visGif.style.display = mode === 'gif' ? 'block' : 'none';
+            if (visSvg) visSvg.style.display = mode === 'svg' ? 'block' : 'none';
+          });
+        });
+
+        // 2. Slide 4: 3-Stage Nanotechnology Mechanism Selector
+        const stageBtns = document.querySelectorAll('.nano-stage-btn');
+        const leftCard = document.getElementById('nano-card-left');
+        const rightCard = document.getElementById('nano-card-right');
+
+        stageBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const st = btn.getAttribute('data-nano-stage');
+            stageBtns.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            if (leftCard && rightCard) {
+              leftCard.style.borderColor = st === '1' ? 'var(--brand)' : 'var(--lavender)';
+              rightCard.style.borderColor = (st === '2' || st === '3') ? 'var(--brand)' : 'var(--lavender)';
+            }
+          });
+        });
+
+        // 3. Click-to-Zoom Lightbox for Scientific Diagrams & Literature Excerpt
+        const lightbox = document.getElementById('diagram-lightbox');
+        const lightboxImg = document.getElementById('diagram-lightbox-img');
+        const lightboxClose = document.getElementById('diagram-lightbox-close');
+
+        document.querySelectorAll('.zoomable-media').forEach((img) => {
+          img.addEventListener('click', () => {
+            if (lightbox && lightboxImg) {
+              lightboxImg.src = img.src;
+              lightboxImg.alt = img.alt;
+              lightbox.classList.add('is-open');
+            }
+          });
+        });
+
+        if (lightbox) {
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lightboxClose) {
+              lightbox.classList.remove('is-open');
+            }
+          });
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lightbox.classList.remove('is-open');
+          });
+        }
+      })();
+    </script>
   </main>
 
-  <!-- Floating Draft Version Switcher (Base vs. Enhanced) -->
-  <aside class="version-switcher" aria-label="Draft version switcher">
-    <span class="version-switcher__label">Draft View:</span>
-    <a href="pathogen-air-filters.html" class="version-switcher__link version-switcher__link--active" aria-current="page">✨ Enhanced</a>
-    <a href="pathogen-air-filters-base.html" class="version-switcher__link">📄 Base</a>
+  <!-- Floating Vendor Handoff Switcher -->
+  <aside class="version-switcher" aria-label="Vendor handoff switcher">
+    <span class="version-switcher__label">Handoff:</span>
+    <a href="pathogen-air-filters.html" class="version-switcher__link version-switcher__link--active" aria-current="page">✨ Live Page</a>
+    <a href="index.html?page=pathogen#code-handoff" class="version-switcher__link">&lt;/&gt; Copy &lt;main&gt; Code</a>
   </aside>
 
   <!-- Main Site Footer -->
@@ -863,76 +934,5 @@
       </div>
     </div>
   </footer>
-
-  <!-- Interactive UI Script -->
-  <script>
-    (function () {
-      // 1. Hero Visual Toggle (Animated GIF vs. Branded SVG Nanowire Diagram)
-      const heroBtns = document.querySelectorAll('[data-hero-vis]');
-      const visGif = document.getElementById('hero-vis-gif');
-      const visSvg = document.getElementById('hero-vis-svg');
-
-      heroBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const mode = btn.getAttribute('data-hero-vis');
-          heroBtns.forEach((b) => b.classList.remove('is-active'));
-          btn.classList.add('is-active');
-          if (visGif) visGif.style.display = mode === 'gif' ? 'block' : 'none';
-          if (visSvg) visSvg.style.display = mode === 'svg' ? 'block' : 'none';
-        });
-      });
-
-      // 2. Slide 4: 3-Stage Nanotechnology Mechanism Selector
-      const stageBtns = document.querySelectorAll('.nano-stage-btn');
-      const leftCard = document.getElementById('nano-card-left');
-      const rightCard = document.getElementById('nano-card-right');
-
-      stageBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const st = btn.getAttribute('data-nano-stage');
-          stageBtns.forEach((b) => b.classList.remove('is-active'));
-          btn.classList.add('is-active');
-          if (leftCard && rightCard) {
-            leftCard.style.borderColor = st === '1' ? 'var(--brand)' : 'var(--lavender)';
-            rightCard.style.borderColor = (st === '2' || st === '3') ? 'var(--brand)' : 'var(--lavender)';
-          }
-        });
-      });
-
-      // 3. Click-to-Zoom Lightbox for Scientific Diagrams & Literature Excerpt
-      const lightbox = document.getElementById('diagram-lightbox');
-      const lightboxImg = document.getElementById('diagram-lightbox-img');
-      const lightboxClose = document.getElementById('diagram-lightbox-close');
-
-      document.querySelectorAll('.zoomable-media').forEach((img) => {
-        img.addEventListener('click', () => {
-          if (lightbox && lightboxImg) {
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            lightbox.classList.add('is-open');
-          }
-        });
-      });
-
-      if (lightbox) {
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox || e.target === lightboxClose) {
-            lightbox.classList.remove('is-open');
-          }
-        });
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') lightbox.classList.remove('is-open');
-        });
-      }
-    })();
-  </script>
-
-  <!-- Full-Screen Diagram Lightbox Modal -->
-  <div id="diagram-lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Enlarged scientific diagram">
-    <div class="lightbox-content">
-      <button type="button" id="diagram-lightbox-close" class="lightbox-close" aria-label="Close enlarged view">✕</button>
-      <img id="diagram-lightbox-img" src="" alt="" />
-    </div>
-  </div>
 </body>
 </html>

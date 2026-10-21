@@ -1341,13 +1341,298 @@
         </div>
       </div>
     </section>
+
+    <!-- Full-Screen Diagram Lightbox Modal -->
+    <div id="diagram-lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Enlarged engineering diagram">
+      <div class="lightbox-content">
+        <button type="button" id="diagram-lightbox-close" class="lightbox-close" aria-label="Close enlarged view">✕</button>
+        <img id="diagram-lightbox-img" src="" alt="" />
+      </div>
+    </div>
+
+    <!-- Interactive UI Script -->
+    <script>
+      (function () {
+        // 1. Slide 3: 4 Interactive Step Cards + SVG Subsystem Highlighting + Auto-Cycle Timer
+        const stepCards = document.querySelectorAll('.interactive-step-card');
+        const liveStepStatus = document.getElementById('live-step-status');
+        const microcapsules = document.querySelectorAll('.capture-microcapsule');
+        const defaultCapsuleColors = ['#8e74c4', '#7d67ae', '#9f86d6', '#7d67ae', '#9f86d6', '#8e74c4', '#8e74c4'];
+
+        const allGroups = {
+          inlet: document.getElementById('svg-group-inlet'),
+          capture: document.getElementById('svg-stage-capture'),
+          sensor: document.getElementById('svg-stage-sensor'),
+          conduit1: document.getElementById('svg-group-conduit1'),
+          regen: document.getElementById('svg-stage-regen'),
+          exchange: document.getElementById('svg-stage-exchange'),
+          oven: document.getElementById('svg-stage-oven'),
+          reuse: document.getElementById('svg-group-reuse'),
+          conduit2: document.getElementById('svg-group-conduit2'),
+          compression: document.getElementById('svg-group-compression')
+        };
+
+        const activeGroupsByStep = {
+          '1': ['inlet', 'capture', 'sensor'],
+          '2': ['capture', 'sensor'],
+          '3': ['conduit1', 'regen', 'exchange'],
+          '4': ['regen', 'oven', 'reuse', 'conduit2', 'compression']
+        };
+
+        const svgBoxes = {
+          '1': { el: document.getElementById('svg-box-capture'), filter: 'url(#glowPurple)', stroke: '#c5b0f6', width: '3.2' },
+          '2': { el: document.getElementById('svg-box-sensor'), filter: 'url(#glowAmber)', stroke: '#fde68a', width: '3' },
+          '3': { el: document.getElementById('svg-box-exchange'), filter: 'url(#glowAmber)', stroke: '#fde68a', width: '3.5' },
+          '4': { el: document.getElementById('svg-box-oven'), filter: 'url(#glowAmber)', stroke: '#fde68a', width: '3.2' }
+        };
+
+        let currentStepIndex = 0;
+        const stepOrder = ['1', '2', '3', '4'];
+        let stepTimer = null;
+
+        function activateStep(stepId) {
+          currentStepIndex = stepOrder.indexOf(String(stepId));
+          if (currentStepIndex === -1) currentStepIndex = 0;
+
+          // 1. Update Step Cards & Restart Progress Bar Animation
+          stepCards.forEach((c) => {
+            const isMatch = c.getAttribute('data-step') === String(stepId);
+            c.classList.remove('is-active');
+            if (isMatch) {
+              void c.offsetWidth; // trigger reflow to restart CSS progress bar
+              c.classList.add('is-active');
+              if (liveStepStatus) {
+                const desc = c.getAttribute('data-step-desc');
+                if (desc) liveStepStatus.textContent = desc;
+              }
+            }
+          });
+
+          // 2. Toggle Spotlight Halos & Callout Badges (1..4)
+          stepOrder.forEach((id) => {
+            const spot = document.getElementById('svg-spotlight-' + id);
+            const badge = document.getElementById('svg-badge-' + id);
+            if (spot) spot.classList.toggle('is-visible', id === String(stepId));
+            if (badge) badge.classList.toggle('is-visible', id === String(stepId));
+          });
+
+          // 3. Dim Non-Active Subsystems & Highlight Active Ones
+          const activeKeys = activeGroupsByStep[String(stepId)] || [];
+          Object.keys(allGroups).forEach((key) => {
+            const grp = allGroups[key];
+            if (!grp) return;
+            const isHighlighted = activeKeys.includes(key);
+            grp.classList.toggle('is-dimmed', !isHighlighted);
+            grp.classList.toggle('is-highlighted', isHighlighted);
+          });
+
+          // 4. Apply Intense Drop-Shadow Glow to Active Subsystem Box
+          Object.keys(svgBoxes).forEach((key) => {
+            const item = svgBoxes[key];
+            if (!item || !item.el) return;
+            if (key === String(stepId)) {
+              item.el.setAttribute('filter', item.filter);
+              item.el.setAttribute('stroke', item.stroke);
+              item.el.setAttribute('stroke-width', item.width);
+            } else {
+              item.el.removeAttribute('filter');
+              item.el.setAttribute('stroke-width', key === '1' ? '2.2' : key === '3' ? '2.5' : '1.6');
+            }
+          });
+
+          // 5. On Step 2 (Optical Sensing), shift microcapsules to saturated gold/amber
+          microcapsules.forEach((cap, idx) => {
+            if (String(stepId) === '2') {
+              cap.setAttribute('fill', '#fbbf24');
+              cap.setAttribute('stroke', '#fef3c7');
+            } else {
+              cap.setAttribute('fill', defaultCapsuleColors[idx % defaultCapsuleColors.length]);
+              cap.setAttribute('stroke', '#ece8f7');
+            }
+          });
+        }
+
+        function startStepTimer() {
+          if (stepTimer) clearInterval(stepTimer);
+          stepTimer = setInterval(() => {
+            const nextIndex = (currentStepIndex + 1) % stepOrder.length;
+            activateStep(stepOrder[nextIndex]);
+          }, 4500);
+        }
+
+        stepCards.forEach((card) => {
+          card.addEventListener('click', () => {
+            activateStep(card.getAttribute('data-step'));
+            startStepTimer();
+          });
+        });
+
+        document.querySelectorAll('[data-svg-step]').forEach((svgGroup) => {
+          svgGroup.addEventListener('click', (e) => {
+            e.stopPropagation();
+            activateStep(svgGroup.getAttribute('data-svg-step'));
+            startStepTimer();
+          });
+        });
+
+        // Initialize Step 1 & start automatic cycle timer
+        activateStep('1');
+        startStepTimer();
+
+        // 3. Slide 4: Cartridge A-D Callout Selector
+        const calloutBtns = document.querySelectorAll('.cartridge-callout-btn');
+        const inspectorText = document.getElementById('cartridge-inspector-text');
+        calloutBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            calloutBtns.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            if (inspectorText) {
+              inspectorText.innerHTML = '<strong style="color: var(--lilac-highlight);">Active Selection:</strong> ' + btn.getAttribute('data-panel-text');
+            }
+          });
+        });
+
+        // 4. Slide 4: Colorimetric Microcapsule Simulator (a -> b -> c)
+        const capBtns = document.querySelectorAll('[data-cap-state]');
+        const simCore = document.getElementById('sim-capsule-core');
+        const simLabel = document.getElementById('sim-capsule-label');
+        const simSub = document.getElementById('sim-capsule-sub');
+        const simTitle = document.getElementById('capsule-sim-title');
+        const simBadge = document.getElementById('capsule-sim-badge');
+
+        const capStates = {
+          a: {
+            color: '#8b2d8c',
+            label: 'CO₃²⁻',
+            sub: 'High pH · Unloaded carbonate core',
+            title: 'State (a): No CO₂ — Ready for Capture (Purple)',
+            badgeText: 'Optical Sensor: Ready',
+            badgeBg: '#f3e8ff',
+            badgeColor: '#6b21a8'
+          },
+          b: {
+            color: '#d49b27',
+            label: 'HCO₃⁻',
+            sub: 'pH drops as CO₂ converts to bicarbonate',
+            title: 'State (b): CO₂ Absorbed — Saturated (Yellow/Gold)',
+            badgeText: 'Optical Sensor: Saturated (Swap Triggered)',
+            badgeBg: '#fef3c7',
+            badgeColor: '#92400e'
+          },
+          c: {
+            color: '#8b2d8c',
+            label: 'CO₃²⁻',
+            sub: 'CO₂ released via heat · Sorbent restored',
+            title: 'State (c): Regenerated — Ready for Reuse (Purple)',
+            badgeText: 'Optical Sensor: Restored',
+            badgeBg: '#ecfdf5',
+            badgeColor: '#065f46'
+          }
+        };
+
+        capBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const st = capStates[btn.getAttribute('data-cap-state')];
+            if (!st) return;
+            capBtns.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            if (simCore) simCore.setAttribute('fill', st.color);
+            if (simLabel) simLabel.textContent = st.label;
+            if (simSub) simSub.textContent = st.sub;
+            if (simTitle) simTitle.textContent = st.title;
+            if (simBadge) {
+              simBadge.style.background = st.badgeBg;
+              simBadge.style.color = st.badgeColor;
+              simBadge.innerHTML = '<span class="pill-badge__dot" style="background:' + st.color + ';"></span> ' + st.badgeText;
+            }
+          });
+        });
+
+        // 5. Slide 5: Catalyst Concentration Filter
+        const catBtns = document.querySelectorAll('.catalyst-filter-btn');
+        const catGroups = document.querySelectorAll('[data-cat-group]');
+        catBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const val = btn.getAttribute('data-cat');
+            catBtns.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            catGroups.forEach((grp) => {
+              const match = val === 'all' || grp.getAttribute('data-cat-group') === val;
+              grp.style.display = match ? 'block' : 'none';
+              grp.classList.toggle('is-highlighted', val !== 'all' && match);
+            });
+          });
+        });
+
+        // 6. Slide 6: Interactive Landfill Gas CFM Impact Calculator
+        const cfmRange = document.getElementById('cfm-range');
+        const cfmDisplay = document.getElementById('calc-cfm-display');
+        const rawScfEl = document.getElementById('calc-raw-scf');
+        const ch4ScfEl = document.getElementById('calc-ch4-scf');
+        const co2TonsEl = document.getElementById('calc-co2-tons');
+        const presetBtns = document.querySelectorAll('.cfm-preset-btn');
+
+        function updateCfmCalc(cfm) {
+          const ratio = cfm / 15000;
+          const rawB = (7.88 * ratio).toFixed(2);
+          const ch4B = (3.745 * ratio).toFixed(3);
+          const co2Tons = Math.round(186614 * ratio).toLocaleString('en-US');
+
+          if (cfmDisplay) cfmDisplay.textContent = Number(cfm).toLocaleString('en-US') + ' CFM';
+          if (rawScfEl) rawScfEl.textContent = rawB + 'B';
+          if (ch4ScfEl) ch4ScfEl.textContent = ch4B + 'B';
+          if (co2TonsEl) co2TonsEl.textContent = co2Tons;
+
+          presetBtns.forEach((b) => {
+            b.classList.toggle('is-active', Number(b.getAttribute('data-cfm')) === Number(cfm));
+          });
+        }
+
+        if (cfmRange) {
+          cfmRange.addEventListener('input', (e) => updateCfmCalc(e.target.value));
+        }
+        presetBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const val = btn.getAttribute('data-cfm');
+            if (cfmRange) cfmRange.value = val;
+            updateCfmCalc(val);
+          });
+        });
+
+        // 7. Click-to-Zoom Lightbox for Engineering Blueprints & Renders
+        const lightbox = document.getElementById('diagram-lightbox');
+        const lightboxImg = document.getElementById('diagram-lightbox-img');
+        const lightboxClose = document.getElementById('diagram-lightbox-close');
+
+        document.querySelectorAll('.zoomable-media').forEach((img) => {
+          img.addEventListener('click', () => {
+            if (lightbox && lightboxImg) {
+              lightboxImg.src = img.src;
+              lightboxImg.alt = img.alt;
+              lightbox.classList.add('is-open');
+            }
+          });
+        });
+
+        if (lightbox) {
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lightboxClose) {
+              lightbox.classList.remove('is-open');
+            }
+          });
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lightbox.classList.remove('is-open');
+          });
+        }
+      })();
+    </script>
   </main>
 
-  <!-- Floating Draft Version Switcher (Base vs. Enhanced) -->
-  <aside class="version-switcher" aria-label="Draft version switcher">
-    <span class="version-switcher__label">Draft View:</span>
-    <a href="environmental-air-filters.html" class="version-switcher__link version-switcher__link--active" aria-current="page">✨ Enhanced</a>
-    <a href="environmental-air-filters-base.html" class="version-switcher__link">📄 Base</a>
+  <!-- Floating Vendor Handoff Switcher -->
+  <aside class="version-switcher" aria-label="Vendor handoff switcher">
+    <span class="version-switcher__label">Handoff:</span>
+    <a href="environmental-air-filters.html" class="version-switcher__link version-switcher__link--active" aria-current="page">✨ Live Page</a>
+    <a href="index.html?page=environmental#code-handoff" class="version-switcher__link">&lt;/&gt; Copy &lt;main&gt; Code</a>
   </aside>
 
   <!-- Main Site Footer -->
@@ -1437,290 +1722,5 @@
       </div>
     </div>
   </footer>
-
-  <!-- Interactive UI Script -->
-  <script>
-    (function () {
-      // 1. Slide 3: 4 Interactive Step Cards + SVG Subsystem Highlighting + Auto-Cycle Timer
-      const stepCards = document.querySelectorAll('.interactive-step-card');
-      const liveStepStatus = document.getElementById('live-step-status');
-      const microcapsules = document.querySelectorAll('.capture-microcapsule');
-      const defaultCapsuleColors = ['#8e74c4', '#7d67ae', '#9f86d6', '#7d67ae', '#9f86d6', '#8e74c4', '#8e74c4'];
-
-      const allGroups = {
-        inlet: document.getElementById('svg-group-inlet'),
-        capture: document.getElementById('svg-stage-capture'),
-        sensor: document.getElementById('svg-stage-sensor'),
-        conduit1: document.getElementById('svg-group-conduit1'),
-        regen: document.getElementById('svg-stage-regen'),
-        exchange: document.getElementById('svg-stage-exchange'),
-        oven: document.getElementById('svg-stage-oven'),
-        reuse: document.getElementById('svg-group-reuse'),
-        conduit2: document.getElementById('svg-group-conduit2'),
-        compression: document.getElementById('svg-group-compression')
-      };
-
-      const activeGroupsByStep = {
-        '1': ['inlet', 'capture', 'sensor'],
-        '2': ['capture', 'sensor'],
-        '3': ['conduit1', 'regen', 'exchange'],
-        '4': ['regen', 'oven', 'reuse', 'conduit2', 'compression']
-      };
-
-      const svgBoxes = {
-        '1': { el: document.getElementById('svg-box-capture'), filter: 'url(#glowPurple)', stroke: '#c5b0f6', width: '3.2' },
-        '2': { el: document.getElementById('svg-box-sensor'), filter: 'url(#glowAmber)', stroke: '#fde68a', width: '3' },
-        '3': { el: document.getElementById('svg-box-exchange'), filter: 'url(#glowAmber)', stroke: '#fde68a', width: '3.5' },
-        '4': { el: document.getElementById('svg-box-oven'), filter: 'url(#glowAmber)', stroke: '#fde68a', width: '3.2' }
-      };
-
-      let currentStepIndex = 0;
-      const stepOrder = ['1', '2', '3', '4'];
-      let stepTimer = null;
-
-      function activateStep(stepId) {
-        currentStepIndex = stepOrder.indexOf(String(stepId));
-        if (currentStepIndex === -1) currentStepIndex = 0;
-
-        // 1. Update Step Cards & Restart Progress Bar Animation
-        stepCards.forEach((c) => {
-          const isMatch = c.getAttribute('data-step') === String(stepId);
-          c.classList.remove('is-active');
-          if (isMatch) {
-            void c.offsetWidth; // trigger reflow to restart CSS progress bar
-            c.classList.add('is-active');
-            if (liveStepStatus) {
-              const desc = c.getAttribute('data-step-desc');
-              if (desc) liveStepStatus.textContent = desc;
-            }
-          }
-        });
-
-        // 2. Toggle Spotlight Halos & Callout Badges (1..4)
-        stepOrder.forEach((id) => {
-          const spot = document.getElementById('svg-spotlight-' + id);
-          const badge = document.getElementById('svg-badge-' + id);
-          if (spot) spot.classList.toggle('is-visible', id === String(stepId));
-          if (badge) badge.classList.toggle('is-visible', id === String(stepId));
-        });
-
-        // 3. Dim Non-Active Subsystems & Highlight Active Ones
-        const activeKeys = activeGroupsByStep[String(stepId)] || [];
-        Object.keys(allGroups).forEach((key) => {
-          const grp = allGroups[key];
-          if (!grp) return;
-          const isHighlighted = activeKeys.includes(key);
-          grp.classList.toggle('is-dimmed', !isHighlighted);
-          grp.classList.toggle('is-highlighted', isHighlighted);
-        });
-
-        // 4. Apply Intense Drop-Shadow Glow to Active Subsystem Box
-        Object.keys(svgBoxes).forEach((key) => {
-          const item = svgBoxes[key];
-          if (!item || !item.el) return;
-          if (key === String(stepId)) {
-            item.el.setAttribute('filter', item.filter);
-            item.el.setAttribute('stroke', item.stroke);
-            item.el.setAttribute('stroke-width', item.width);
-          } else {
-            item.el.removeAttribute('filter');
-            item.el.setAttribute('stroke-width', key === '1' ? '2.2' : key === '3' ? '2.5' : '1.6');
-          }
-        });
-
-        // 5. On Step 2 (Optical Sensing), shift microcapsules to saturated gold/amber
-        microcapsules.forEach((cap, idx) => {
-          if (String(stepId) === '2') {
-            cap.setAttribute('fill', '#fbbf24');
-            cap.setAttribute('stroke', '#fef3c7');
-          } else {
-            cap.setAttribute('fill', defaultCapsuleColors[idx % defaultCapsuleColors.length]);
-            cap.setAttribute('stroke', '#ece8f7');
-          }
-        });
-      }
-
-      function startStepTimer() {
-        if (stepTimer) clearInterval(stepTimer);
-        stepTimer = setInterval(() => {
-          const nextIndex = (currentStepIndex + 1) % stepOrder.length;
-          activateStep(stepOrder[nextIndex]);
-        }, 4500);
-      }
-
-      stepCards.forEach((card) => {
-        card.addEventListener('click', () => {
-          activateStep(card.getAttribute('data-step'));
-          startStepTimer();
-        });
-      });
-
-      document.querySelectorAll('[data-svg-step]').forEach((svgGroup) => {
-        svgGroup.addEventListener('click', (e) => {
-          e.stopPropagation();
-          activateStep(svgGroup.getAttribute('data-svg-step'));
-          startStepTimer();
-        });
-      });
-
-      // Initialize Step 1 & start automatic cycle timer
-      activateStep('1');
-      startStepTimer();
-
-      // 3. Slide 4: Cartridge A-D Callout Selector
-      const calloutBtns = document.querySelectorAll('.cartridge-callout-btn');
-      const inspectorText = document.getElementById('cartridge-inspector-text');
-      calloutBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          calloutBtns.forEach((b) => b.classList.remove('is-active'));
-          btn.classList.add('is-active');
-          if (inspectorText) {
-            inspectorText.innerHTML = '<strong style="color: var(--lilac-highlight);">Active Selection:</strong> ' + btn.getAttribute('data-panel-text');
-          }
-        });
-      });
-
-      // 4. Slide 4: Colorimetric Microcapsule Simulator (a -> b -> c)
-      const capBtns = document.querySelectorAll('[data-cap-state]');
-      const simCore = document.getElementById('sim-capsule-core');
-      const simLabel = document.getElementById('sim-capsule-label');
-      const simSub = document.getElementById('sim-capsule-sub');
-      const simTitle = document.getElementById('capsule-sim-title');
-      const simBadge = document.getElementById('capsule-sim-badge');
-
-      const capStates = {
-        a: {
-          color: '#8b2d8c',
-          label: 'CO₃²⁻',
-          sub: 'High pH · Unloaded carbonate core',
-          title: 'State (a): No CO₂ — Ready for Capture (Purple)',
-          badgeText: 'Optical Sensor: Ready',
-          badgeBg: '#f3e8ff',
-          badgeColor: '#6b21a8'
-        },
-        b: {
-          color: '#d49b27',
-          label: 'HCO₃⁻',
-          sub: 'pH drops as CO₂ converts to bicarbonate',
-          title: 'State (b): CO₂ Absorbed — Saturated (Yellow/Gold)',
-          badgeText: 'Optical Sensor: Saturated (Swap Triggered)',
-          badgeBg: '#fef3c7',
-          badgeColor: '#92400e'
-        },
-        c: {
-          color: '#8b2d8c',
-          label: 'CO₃²⁻',
-          sub: 'CO₂ released via heat · Sorbent restored',
-          title: 'State (c): Regenerated — Ready for Reuse (Purple)',
-          badgeText: 'Optical Sensor: Restored',
-          badgeBg: '#ecfdf5',
-          badgeColor: '#065f46'
-        }
-      };
-
-      capBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const st = capStates[btn.getAttribute('data-cap-state')];
-          if (!st) return;
-          capBtns.forEach((b) => b.classList.remove('is-active'));
-          btn.classList.add('is-active');
-          if (simCore) simCore.setAttribute('fill', st.color);
-          if (simLabel) simLabel.textContent = st.label;
-          if (simSub) simSub.textContent = st.sub;
-          if (simTitle) simTitle.textContent = st.title;
-          if (simBadge) {
-            simBadge.style.background = st.badgeBg;
-            simBadge.style.color = st.badgeColor;
-            simBadge.innerHTML = '<span class="pill-badge__dot" style="background:' + st.color + ';"></span> ' + st.badgeText;
-          }
-        });
-      });
-
-      // 5. Slide 5: Catalyst Concentration Filter
-      const catBtns = document.querySelectorAll('.catalyst-filter-btn');
-      const catGroups = document.querySelectorAll('[data-cat-group]');
-      catBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const val = btn.getAttribute('data-cat');
-          catBtns.forEach((b) => b.classList.remove('is-active'));
-          btn.classList.add('is-active');
-          catGroups.forEach((grp) => {
-            const match = val === 'all' || grp.getAttribute('data-cat-group') === val;
-            grp.style.display = match ? 'block' : 'none';
-            grp.classList.toggle('is-highlighted', val !== 'all' && match);
-          });
-        });
-      });
-
-      // 6. Slide 6: Interactive Landfill Gas CFM Impact Calculator
-      const cfmRange = document.getElementById('cfm-range');
-      const cfmDisplay = document.getElementById('calc-cfm-display');
-      const rawScfEl = document.getElementById('calc-raw-scf');
-      const ch4ScfEl = document.getElementById('calc-ch4-scf');
-      const co2TonsEl = document.getElementById('calc-co2-tons');
-      const presetBtns = document.querySelectorAll('.cfm-preset-btn');
-
-      function updateCfmCalc(cfm) {
-        const ratio = cfm / 15000;
-        const rawB = (7.88 * ratio).toFixed(2);
-        const ch4B = (3.745 * ratio).toFixed(3);
-        const co2Tons = Math.round(186614 * ratio).toLocaleString('en-US');
-
-        if (cfmDisplay) cfmDisplay.textContent = Number(cfm).toLocaleString('en-US') + ' CFM';
-        if (rawScfEl) rawScfEl.textContent = rawB + 'B';
-        if (ch4ScfEl) ch4ScfEl.textContent = ch4B + 'B';
-        if (co2TonsEl) co2TonsEl.textContent = co2Tons;
-
-        presetBtns.forEach((b) => {
-          b.classList.toggle('is-active', Number(b.getAttribute('data-cfm')) === Number(cfm));
-        });
-      }
-
-      if (cfmRange) {
-        cfmRange.addEventListener('input', (e) => updateCfmCalc(e.target.value));
-      }
-      presetBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const val = btn.getAttribute('data-cfm');
-          if (cfmRange) cfmRange.value = val;
-          updateCfmCalc(val);
-        });
-      });
-
-      // 7. Click-to-Zoom Lightbox for Engineering Blueprints & Renders
-      const lightbox = document.getElementById('diagram-lightbox');
-      const lightboxImg = document.getElementById('diagram-lightbox-img');
-      const lightboxClose = document.getElementById('diagram-lightbox-close');
-
-      document.querySelectorAll('.zoomable-media').forEach((img) => {
-        img.addEventListener('click', () => {
-          if (lightbox && lightboxImg) {
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            lightbox.classList.add('is-open');
-          }
-        });
-      });
-
-      if (lightbox) {
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox || e.target === lightboxClose) {
-            lightbox.classList.remove('is-open');
-          }
-        });
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') lightbox.classList.remove('is-open');
-        });
-      }
-    })();
-  </script>
-
-  <!-- Full-Screen Diagram Lightbox Modal -->
-  <div id="diagram-lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Enlarged engineering diagram">
-    <div class="lightbox-content">
-      <button type="button" id="diagram-lightbox-close" class="lightbox-close" aria-label="Close enlarged view">✕</button>
-      <img id="diagram-lightbox-img" src="" alt="" />
-    </div>
-  </div>
 </body>
 </html>
