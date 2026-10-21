@@ -169,9 +169,9 @@
               <div class="hero-glass-card" style="padding: 1rem;">
                 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem;">
                   <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem;">Side-by-Side Filtration Concept</span>
-                  <div style="display: inline-flex; gap: 0.25rem; background: rgba(0,0,0,0.35); padding: 0.2rem; border-radius: 99px;">
-                    <button type="button" class="hero-vis-btn view-tabs__btn is-active" style="padding: 0.25rem 0.65rem; font-size: 0.7rem; color: #fff;" data-hero-vis="gif">Animated Concept</button>
-                    <button type="button" class="hero-vis-btn view-tabs__btn" style="padding: 0.25rem 0.65rem; font-size: 0.7rem; color: rgba(255,255,255,0.75);" data-hero-vis="svg">Nanowire Diagram</button>
+                  <div class="segmented segmented--dark" role="group" aria-label="Choose diagram view">
+                    <button type="button" class="hero-vis-btn view-tabs__btn is-active" aria-pressed="true" data-hero-vis="gif">Animated Concept</button>
+                    <button type="button" class="hero-vis-btn view-tabs__btn" aria-pressed="false" data-hero-vis="svg">Nanowire Diagram</button>
                   </div>
                 </div>
 
@@ -186,7 +186,8 @@
 
                 <!-- View B: Branded SVG Interactive Comparison -->
                 <div id="hero-vis-svg" style="display: none; border-radius: 1rem; overflow: hidden; background: #140b24; border: 1px solid rgba(197, 176, 246, 0.25); padding: 1rem;">
-                  <svg viewBox="0 0 540 310" width="100%" height="auto" aria-label="Diagram comparing Traditional Filter where pathogens survive versus Korgano Pathogen Filter with Porous Nanowire and BMPs" style="font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;">
+                  <!-- Wide layout (≥640px); the portrait version below replaces it on phones -->
+                  <svg class="hero-nanowire hero-nanowire--wide" viewBox="0 0 540 310" width="100%" role="img" aria-label="Diagram comparing Traditional Filter where pathogens survive versus Korgano Pathogen Filter with Porous Nanowire and BMPs">
                     <!-- Top Half: Traditional Filter -->
                     <rect x="10" y="10" width="520" height="136" rx="12" fill="#231224" stroke="rgba(248, 113, 113, 0.4)" stroke-width="1.5" />
                     <text x="26" y="34" fill="#fca5a5" font-size="11" font-weight="800" letter-spacing="0.8">TRADITIONAL AIR FILTERS</text>
@@ -246,6 +247,59 @@
                     <rect x="352" y="230" width="160" height="44" rx="9" fill="rgba(16, 185, 129, 0.2)" stroke="#34d399" />
                     <text x="432" y="249" text-anchor="middle" fill="#a6e3d8" font-size="10" font-weight="800">✓ Pathogen &amp; Particle</text>
                     <text x="432" y="264" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="600">Free Pure Air Flow</text>
+                  </svg>
+
+                  <!-- Portrait layout (<640px): same content stacked so labels stay legible at phone width -->
+                  <svg class="hero-nanowire hero-nanowire--tall" viewBox="0 0 320 460" width="100%" role="img" aria-label="Diagram comparing Traditional Filter where pathogens survive versus Korgano Pathogen Filter with Porous Nanowire and BMPs">
+                    <!-- Top Panel: Traditional Filter -->
+                    <rect x="6" y="6" width="308" height="214" rx="12" fill="#231224" stroke="rgba(248, 113, 113, 0.4)" stroke-width="1.5" />
+                    <text x="22" y="32" fill="#fca5a5" font-size="13" font-weight="800" letter-spacing="0.8">TRADITIONAL AIR FILTERS</text>
+                    <text x="22" y="53" fill="rgba(255,255,255,0.78)" font-size="11.5">Captures dust, but pathogens can survive</text>
+                    <text x="22" y="69" fill="rgba(255,255,255,0.78)" font-size="11.5">on fibers or pass into airflow</text>
+
+                    <line x1="26" y1="106" x2="294" y2="106" stroke="rgba(248,113,113,0.22)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <line x1="26" y1="134" x2="294" y2="134" stroke="rgba(248,113,113,0.22)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <circle r="5" fill="#ef4444">
+                      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 26 106 L 290 106" />
+                    </circle>
+                    <circle r="5" fill="#f97316">
+                      <animateMotion dur="2.6s" begin="0.8s" repeatCount="indefinite" path="M 26 134 L 290 134" />
+                    </circle>
+                    <rect x="146" y="88" width="28" height="64" rx="5" fill="#334155" stroke="#94a3b8" stroke-width="1.5" />
+                    <circle cx="160" cy="120" r="5" fill="#ef4444">
+                      <animate attributeName="r" values="4;6.5;4" dur="2s" repeatCount="indefinite" />
+                    </circle>
+
+                    <rect x="50" y="166" width="220" height="44" rx="9" fill="rgba(220, 38, 38, 0.18)" stroke="rgba(248, 113, 113, 0.45)" />
+                    <text x="160" y="184" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="800">⚠ Virulent Pathogens</text>
+                    <text x="160" y="201" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">Survive &amp; Re-Release</text>
+
+                    <!-- Bottom Panel: Korgano Pathogen Filter -->
+                    <rect x="6" y="234" width="308" height="220" rx="12" fill="#132a2e" stroke="#34d399" stroke-width="1.5" />
+                    <text x="22" y="260" fill="#a6e3d8" font-size="13" font-weight="800" letter-spacing="0.8">KORGANO PATHOGEN FILTER (R&amp;D)</text>
+                    <text x="22" y="281" fill="rgba(255,255,255,0.85)" font-size="11.5">100–500 nm porous nanowire web +</text>
+                    <text x="22" y="297" fill="rgba(255,255,255,0.85)" font-size="11.5">Bioactive Metal Particles (BMPs)</text>
+
+                    <line x1="26" y1="336" x2="142" y2="336" stroke="rgba(248,113,113,0.25)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <line x1="178" y1="336" x2="294" y2="336" stroke="rgba(52,211,153,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <line x1="178" y1="362" x2="294" y2="362" stroke="rgba(52,211,153,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <circle r="5" fill="#ef4444">
+                      <animateMotion dur="1.7s" repeatCount="indefinite" path="M 26 336 L 142 336" />
+                    </circle>
+                    <circle r="5" fill="#34d399">
+                      <animateMotion dur="1.9s" repeatCount="indefinite" path="M 178 336 L 290 336" />
+                    </circle>
+                    <circle r="5" fill="#a6e3d8">
+                      <animateMotion dur="1.9s" begin="0.95s" repeatCount="indefinite" path="M 178 362 L 290 362" />
+                    </circle>
+                    <rect x="142" y="316" width="36" height="66" rx="6" fill="#4a3570" stroke="#c5b0f6" stroke-width="2" />
+                    <circle cx="160" cy="332" r="3.5" fill="#fbbf24" />
+                    <circle cx="160" cy="349" r="3.5" fill="#34d399" />
+                    <circle cx="160" cy="366" r="3.5" fill="#fbbf24" />
+
+                    <rect x="50" y="398" width="220" height="44" rx="9" fill="rgba(16, 185, 129, 0.2)" stroke="#34d399" />
+                    <text x="160" y="416" text-anchor="middle" fill="#a6e3d8" font-size="12" font-weight="800">✓ Pathogen &amp; Particle</text>
+                    <text x="160" y="433" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">Free Pure Air Flow</text>
                   </svg>
                 </div>
 
@@ -501,7 +555,7 @@
 
         <!-- Interactive 3-Stage Mechanism Cards -->
         <div class="grid-3" style="margin-bottom: 2rem;">
-          <button type="button" class="interactive-step-card nano-stage-btn is-active" data-nano-stage="1">
+          <button type="button" class="interactive-step-card nano-stage-btn is-active" aria-pressed="true" data-nano-stage="1">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
               <div style="display: flex; align-items: center; gap: 0.75rem;">
                 <span class="step-badge">01</span>
@@ -514,7 +568,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card nano-stage-btn" data-nano-stage="2">
+          <button type="button" class="interactive-step-card nano-stage-btn" aria-pressed="false" data-nano-stage="2">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
               <div style="display: flex; align-items: center; gap: 0.75rem;">
                 <span class="step-badge">02</span>
@@ -527,7 +581,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card nano-stage-btn" data-nano-stage="3">
+          <button type="button" class="interactive-step-card nano-stage-btn" aria-pressed="false" data-nano-stage="3">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
               <div style="display: flex; align-items: center; gap: 0.75rem;">
                 <span class="step-badge">03</span>
@@ -700,7 +754,7 @@
                   <path d="m12 5 7 7-7 7"></path>
                 </svg>
               </a>
-              <a href="tel:925-989-8726" class="btn btn--outline-light">
+              <a href="tel:+19259898726" class="btn btn--outline-light">
                 Call 925-989-8726
               </a>
             </div>
@@ -732,7 +786,7 @@
                 </span>
                 <div>
                   <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6);">Phone</span>
-                  <a href="tel:925-989-8726" class="contact-list__link">925-989-8726</a>
+                  <a href="tel:+19259898726" class="contact-list__link">925-989-8726</a>
                 </div>
               </li>
 
@@ -779,20 +833,36 @@
     <!-- Interactive UI Script -->
     <script>
       (function () {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Toggle a button's active state for both styling and assistive tech
+        function setPressed(el, on) {
+          el.classList.toggle('is-active', on);
+          el.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+
         // 1. Hero Visual Toggle (Animated GIF vs. Branded SVG Nanowire Diagram)
         const heroBtns = document.querySelectorAll('[data-hero-vis]');
         const visGif = document.getElementById('hero-vis-gif');
         const visSvg = document.getElementById('hero-vis-svg');
 
+        function showHeroVis(mode) {
+          heroBtns.forEach((b) => setPressed(b, b.getAttribute('data-hero-vis') === mode));
+          if (visGif) visGif.style.display = mode === 'gif' ? 'block' : 'none';
+          if (visSvg) visSvg.style.display = mode === 'svg' ? 'block' : 'none';
+        }
+
         heroBtns.forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const mode = btn.getAttribute('data-hero-vis');
-            heroBtns.forEach((b) => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
-            if (visGif) visGif.style.display = mode === 'gif' ? 'block' : 'none';
-            if (visSvg) visSvg.style.display = mode === 'svg' ? 'block' : 'none';
-          });
+          btn.addEventListener('click', () => showHeroVis(btn.getAttribute('data-hero-vis')));
         });
+
+        // Reduced motion: freeze the SVG animations and lead with the (now still) diagram instead of the looping animation
+        if (reduceMotion) {
+          document.querySelectorAll('main svg').forEach((svg) => {
+            if (typeof svg.pauseAnimations === 'function') svg.pauseAnimations();
+          });
+          showHeroVis('svg');
+        }
 
         // 2. Slide 4: 3-Stage Nanotechnology Mechanism Selector
         const stageBtns = document.querySelectorAll('.nano-stage-btn');
@@ -802,8 +872,7 @@
         stageBtns.forEach((btn) => {
           btn.addEventListener('click', () => {
             const st = btn.getAttribute('data-nano-stage');
-            stageBtns.forEach((b) => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
+            stageBtns.forEach((b) => setPressed(b, b === btn));
             if (leftCard && rightCard) {
               leftCard.style.borderColor = st === '1' ? 'var(--brand)' : 'var(--lavender)';
               rightCard.style.borderColor = (st === '2' || st === '3') ? 'var(--brand)' : 'var(--lavender)';
@@ -815,25 +884,49 @@
         const lightbox = document.getElementById('diagram-lightbox');
         const lightboxImg = document.getElementById('diagram-lightbox-img');
         const lightboxClose = document.getElementById('diagram-lightbox-close');
+        let lastFocus = null;
 
+        function openLightbox(img) {
+          if (!lightbox || !lightboxImg) return;
+          lastFocus = document.activeElement;
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('is-open');
+          if (lightboxClose) lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+          if (!lightbox || !lightbox.classList.contains('is-open')) return;
+          lightbox.classList.remove('is-open');
+          if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        }
+
+        // Zoomable images are made keyboard-operable as buttons
         document.querySelectorAll('.zoomable-media').forEach((img) => {
-          img.addEventListener('click', () => {
-            if (lightbox && lightboxImg) {
-              lightboxImg.src = img.src;
-              lightboxImg.alt = img.alt;
-              lightbox.classList.add('is-open');
+          img.setAttribute('tabindex', '0');
+          img.setAttribute('role', 'button');
+          img.setAttribute('aria-label', 'Enlarge image: ' + img.alt);
+          img.addEventListener('click', () => openLightbox(img));
+          img.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openLightbox(img);
             }
           });
         });
 
         if (lightbox) {
           lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox || e.target === lightboxClose) {
-              lightbox.classList.remove('is-open');
-            }
+            if (e.target === lightbox || e.target === lightboxClose) closeLightbox();
           });
           document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') lightbox.classList.remove('is-open');
+            if (!lightbox.classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            // Only the close button is focusable inside the dialog, so keep focus on it
+            if (e.key === 'Tab' && lightboxClose) {
+              e.preventDefault();
+              lightboxClose.focus();
+            }
           });
         }
       })();

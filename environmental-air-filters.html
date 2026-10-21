@@ -395,13 +395,17 @@
                 <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #fbbf24;"></span> CO₂ (Captured &amp; Compressed)</span>
               </div>
             </div>
-            <div id="live-step-status" style="font-size: 0.85rem; font-weight: 600; color: var(--lilac-highlight); line-height: 1.45;">
-              Step 1 Active: Selective CO₂ media filter captures CO₂ as landfill gas flows through while allowing purified CH₄ to pass to recovery.
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem;">
+              <div id="live-step-status" style="font-size: 0.85rem; font-weight: 600; color: var(--lilac-highlight); line-height: 1.45;">
+                Step 1 Active: Selective CO₂ media filter captures CO₂ as landfill gas flows through while allowing purified CH₄ to pass to recovery.
+              </div>
+              <button type="button" id="flow-autoplay-btn" class="flow-autoplay-btn" aria-controls="flow-step-cards">Pause tour</button>
             </div>
           </div>
 
-          <div style="padding: 0.5rem 1.5rem 1.5rem; overflow-x: auto;">
-            <svg viewBox="0 0 1060 436" width="100%" height="auto" role="img" aria-label="Animated KorganoTech Landfill Gas Separation, Automated Regeneration, and CO2 Compression Schematic" style="min-width: 640px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;">
+          <p id="flow-diagram-hint" class="flow-diagram-hint" hidden>Swipe sideways to see the full diagram →</p>
+          <div id="flow-diagram-scroller" class="flow-diagram-scroller">
+            <svg class="flow-diagram" viewBox="0 0 1060 436" width="100%" role="img" aria-label="Animated KorganoTech Landfill Gas Separation, Automated Regeneration, and CO2 Compression Schematic">
               <defs>
                 <linearGradient id="purpleHeaderGrad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#4a3570" />
@@ -790,8 +794,8 @@
         </div>
 
         <!-- 4 Interactive Step Cards -->
-        <div class="grid-4" style="margin-top: 2rem; max-width: 70rem; margin-inline: auto;">
-          <button type="button" class="interactive-step-card is-active" data-step="1" data-step-desc="Step 1 Active: Selective CO₂ media filter captures CO₂ as landfill gas flows through while allowing purified CH₄ to pass to recovery.">
+        <div id="flow-step-cards" class="grid-4" style="margin-top: 2rem; max-width: 70rem; margin-inline: auto;">
+          <button type="button" class="interactive-step-card is-active" aria-pressed="true" data-step="1" data-step-desc="Step 1 Active: Selective CO₂ media filter captures CO₂ as landfill gas flows through while allowing purified CH₄ to pass to recovery.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">1</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Selective CO₂ media filter</h3>
@@ -801,7 +805,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card" data-step="2" data-step-desc="Step 2 Active: Optical sensing window detects the colorimetric shift (purple to gold) when the cartridge reaches CO₂ saturation.">
+          <button type="button" class="interactive-step-card" aria-pressed="false" data-step="2" data-step-desc="Step 2 Active: Optical sensing window detects the colorimetric shift (purple to gold) when the cartridge reaches CO₂ saturation.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">2</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Optical sensing</h3>
@@ -811,7 +815,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card" data-step="3" data-step-desc="Step 3 Active: Automated vertical shuttle swaps the saturated cartridge with a fresh reserve cartridge without interrupting gas flow.">
+          <button type="button" class="interactive-step-card" aria-pressed="false" data-step="3" data-step-desc="Step 3 Active: Automated vertical shuttle swaps the saturated cartridge with a fresh reserve cartridge without interrupting gas flow.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">3</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Automated cartridge exchange</h3>
@@ -821,7 +825,7 @@
             </p>
           </button>
 
-          <button type="button" class="interactive-step-card" data-step="4" data-step-desc="Step 4 Active: Low-energy thermal regeneration chamber releases pure CO₂ for compression and restores the cartridge media for reuse.">
+          <button type="button" class="interactive-step-card" aria-pressed="false" data-step="4" data-step-desc="Step 4 Active: Low-energy thermal regeneration chamber releases pure CO₂ for compression and restores the cartridge media for reuse.">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="step-badge">4</span>
               <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Low-energy regeneration</h3>
@@ -855,7 +859,7 @@
           <div style="display: flex; flex-direction: column;">
             <div class="media-frame media-frame--dark" style="flex: 1; display: flex; flex-direction: column;">
               <div class="cartridge-quadrant-grid" role="group" aria-label="Prototype filter cartridge panels A through D">
-                <button type="button" class="cartridge-quadrant is-active" data-quadrant="A" aria-label="Select Panel A: CO2 capture media integrated with a MERV 13 particulate layer">
+                <button type="button" class="cartridge-quadrant is-active" aria-pressed="true" data-quadrant="A" aria-label="Select Panel A: CO2 capture media integrated with a MERV 13 particulate layer">
                   <span class="cartridge-quadrant__badge">A</span>
                   <img
                     src="assets/environmental/panel-a.webp"
@@ -863,7 +867,7 @@
                   />
                 </button>
 
-                <button type="button" class="cartridge-quadrant" data-quadrant="B" aria-label="Select Panel B: Gas-entry and gas-exit cartridge architecture">
+                <button type="button" class="cartridge-quadrant" aria-pressed="false" data-quadrant="B" aria-label="Select Panel B: Gas-entry and gas-exit cartridge architecture">
                   <span class="cartridge-quadrant__badge">B</span>
                   <img
                     src="assets/environmental/panel-b.webp"
@@ -871,7 +875,7 @@
                   />
                 </button>
 
-                <button type="button" class="cartridge-quadrant" data-quadrant="C" aria-label="Select Panel C: Visible sensor response after CO2 absorption">
+                <button type="button" class="cartridge-quadrant" aria-pressed="false" data-quadrant="C" aria-label="Select Panel C: Visible sensor response after CO2 absorption">
                   <span class="cartridge-quadrant__badge">C</span>
                   <img
                     src="assets/environmental/panel-c.webp"
@@ -879,7 +883,7 @@
                   />
                 </button>
 
-                <button type="button" class="cartridge-quadrant" data-quadrant="D" aria-label="Select Panel D: Sensor restored after heat-assisted CO2 removal">
+                <button type="button" class="cartridge-quadrant" aria-pressed="false" data-quadrant="D" aria-label="Select Panel D: Sensor restored after heat-assisted CO2 removal">
                   <span class="cartridge-quadrant__badge">D</span>
                   <img
                     src="assets/environmental/panel-d.webp"
@@ -899,28 +903,28 @@
           <!-- Right: Interactive A, B, C, D Selector + Interactive Colorimetric Capsule Simulator -->
           <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
             <div class="cartridge-callout-grid">
-              <button type="button" class="cartridge-callout-btn is-active" data-panel="A" data-panel-text="Panel A: CO₂ capture media integrated with a MERV 13 particulate layer">
+              <button type="button" class="cartridge-callout-btn is-active" aria-pressed="true" data-panel="A" data-panel-text="Panel A: CO₂ capture media integrated with a MERV 13 particulate layer">
                 <span class="step-badge">A</span>
                 <span class="cartridge-callout-btn__text">
                   CO₂ capture media integrated with a MERV 13 particulate layer
                 </span>
               </button>
 
-              <button type="button" class="cartridge-callout-btn" data-panel="B" data-panel-text="Panel B: Gas-entry and gas-exit cartridge architecture">
+              <button type="button" class="cartridge-callout-btn" aria-pressed="false" data-panel="B" data-panel-text="Panel B: Gas-entry and gas-exit cartridge architecture">
                 <span class="step-badge">B</span>
                 <span class="cartridge-callout-btn__text">
                   Gas-entry and gas-exit cartridge architecture
                 </span>
               </button>
 
-              <button type="button" class="cartridge-callout-btn" data-panel="C" data-panel-text="Panel C: Visible sensor response after CO₂ absorption (color shift signals saturation)">
+              <button type="button" class="cartridge-callout-btn" aria-pressed="false" data-panel="C" data-panel-text="Panel C: Visible sensor response after CO₂ absorption (color shift signals saturation)">
                 <span class="step-badge">C</span>
                 <span class="cartridge-callout-btn__text">
                   Visible sensor response after CO₂ absorption
                 </span>
               </button>
 
-              <button type="button" class="cartridge-callout-btn" data-panel="D" data-panel-text="Panel D: Sensor restored after heat-assisted CO₂ removal (ready for next capture cycle)">
+              <button type="button" class="cartridge-callout-btn" aria-pressed="false" data-panel="D" data-panel-text="Panel D: Sensor restored after heat-assisted CO₂ removal (ready for next capture cycle)">
                 <span class="step-badge">D</span>
                 <span class="cartridge-callout-btn__text">
                   Sensor restored after heat-assisted CO₂ removal
@@ -970,15 +974,15 @@
 
               <!-- Interactive State Switcher Buttons (a -> b -> c) -->
               <div class="capsule-stage-btns" role="group" aria-label="Select microcapsule cycle state">
-                <button type="button" class="capsule-stage-btn is-active" data-cap-state="a">
+                <button type="button" class="capsule-stage-btn is-active" aria-pressed="true" data-cap-state="a">
                   <span class="progression-steps__dot" style="background-color: #8b2d8c;"></span>
                   (a) No CO₂
                 </button>
-                <button type="button" class="capsule-stage-btn" data-cap-state="b">
+                <button type="button" class="capsule-stage-btn" aria-pressed="false" data-cap-state="b">
                   <span class="progression-steps__dot" style="background-color: #d49b27;"></span>
                   (b) CO₂ absorbed
                 </button>
-                <button type="button" class="capsule-stage-btn" data-cap-state="c">
+                <button type="button" class="capsule-stage-btn" aria-pressed="false" data-cap-state="c">
                   <span class="progression-steps__dot" style="background-color: #8b2d8c;"></span>
                   (c) Regenerated
                 </button>
@@ -1066,11 +1070,11 @@
           <div class="surface-card chart-card" role="region" aria-label="Bar chart comparing CO2 absorption rate of encapsulated microcapsules versus neat liquid sorbent">
             <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
               <h3 class="chart-title">CO₂ absorption rate: capsules vs. neat liquid sorbent</h3>
-              <div style="display: inline-flex; gap: 0.25rem; background: var(--muted); padding: 0.25rem; border-radius: 99px;">
-                <button type="button" class="catalyst-filter-btn view-tabs__btn is-active" style="padding: 0.25rem 0.65rem; font-size: 0.7rem;" data-cat="all">All</button>
-                <button type="button" class="catalyst-filter-btn view-tabs__btn" style="padding: 0.25rem 0.65rem; font-size: 0.7rem;" data-cat="0">0 mM</button>
-                <button type="button" class="catalyst-filter-btn view-tabs__btn" style="padding: 0.25rem 0.65rem; font-size: 0.7rem;" data-cat="25">25 mM</button>
-                <button type="button" class="catalyst-filter-btn view-tabs__btn" style="padding: 0.25rem 0.65rem; font-size: 0.7rem;" data-cat="50">50 mM</button>
+              <div class="segmented" role="group" aria-label="Filter by catalyst concentration">
+                <button type="button" class="catalyst-filter-btn view-tabs__btn is-active" aria-pressed="true" data-cat="all">All</button>
+                <button type="button" class="catalyst-filter-btn view-tabs__btn" aria-pressed="false" data-cat="0">0 mM</button>
+                <button type="button" class="catalyst-filter-btn view-tabs__btn" aria-pressed="false" data-cat="25">25 mM</button>
+                <button type="button" class="catalyst-filter-btn view-tabs__btn" aria-pressed="false" data-cat="50">50 mM</button>
               </div>
             </div>
 
@@ -1236,10 +1240,10 @@
               </h3>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-              <button type="button" class="cfm-preset-btn" data-cfm="2500">2,500 CFM (Municipal)</button>
-              <button type="button" class="cfm-preset-btn" data-cfm="7500">7,500 CFM (Regional)</button>
-              <button type="button" class="cfm-preset-btn is-active" data-cfm="15000">15,000 CFM (Orange County)</button>
-              <button type="button" class="cfm-preset-btn" data-cfm="25000">25,000 CFM (Mega-Site)</button>
+              <button type="button" class="cfm-preset-btn" aria-pressed="false" data-cfm="2500">2,500 CFM (Municipal)</button>
+              <button type="button" class="cfm-preset-btn" aria-pressed="false" data-cfm="7500">7,500 CFM (Regional)</button>
+              <button type="button" class="cfm-preset-btn is-active" aria-pressed="true" data-cfm="15000">15,000 CFM (Orange County)</button>
+              <button type="button" class="cfm-preset-btn" aria-pressed="false" data-cfm="25000">25,000 CFM (Mega-Site)</button>
             </div>
           </div>
 
@@ -1252,12 +1256,13 @@
                 15,000 CFM
               </span>
             </div>
-            <input id="cfm-range" type="range" min="1000" max="25000" step="500" value="15000" class="cfm-slider" />
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.55); font-weight: 600;">
-              <span>1,000 CFM</span>
-              <span>7,500 CFM</span>
-              <span>15,000 CFM (OC Benchmark)</span>
-              <span>25,000 CFM</span>
+            <input id="cfm-range" type="range" min="1000" max="25000" step="500" value="15000" aria-valuetext="15,000 CFM" class="cfm-slider" />
+            <!-- Tick labels sit at their slider positions: (value - 1000) / 24000 -->
+            <div class="cfm-ticks" aria-hidden="true">
+              <span class="cfm-ticks__label cfm-ticks__label--start">1,000</span>
+              <span class="cfm-ticks__label" style="--at: 0.2708;">7,500</span>
+              <span class="cfm-ticks__label" style="--at: 0.5833;">15,000</span>
+              <span class="cfm-ticks__label cfm-ticks__label--end">25,000</span>
             </div>
           </div>
 
@@ -1313,7 +1318,7 @@
                   <path d="m12 5 7 7-7 7"></path>
                 </svg>
               </a>
-              <a href="tel:925-989-8726" class="btn btn--outline-light">
+              <a href="tel:+19259898726" class="btn btn--outline-light">
                 Call 925-989-8726
               </a>
             </div>
@@ -1345,7 +1350,7 @@
                 </span>
                 <div>
                   <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6);">Phone</span>
-                  <a href="tel:925-989-8726" class="contact-list__link">925-989-8726</a>
+                  <a href="tel:+19259898726" class="contact-list__link">925-989-8726</a>
                 </div>
               </li>
 
@@ -1373,20 +1378,31 @@
       </div>
     </section>
 
-    <!-- Full-Screen Diagram Lightbox Modal -->
-    <div id="diagram-lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Enlarged engineering diagram">
-      <div class="lightbox-content">
-        <button type="button" id="diagram-lightbox-close" class="lightbox-close" aria-label="Close enlarged view">✕</button>
-        <img id="diagram-lightbox-img" src="" alt="" />
-      </div>
-    </div>
-
     <!-- Interactive UI Script -->
     <script>
       (function () {
-        // 1. Slide 3: 4 Interactive Step Cards + SVG Subsystem Highlighting + Auto-Cycle Timer
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Toggle a button's active state for both styling and assistive tech
+        function setPressed(el, on) {
+          el.classList.toggle('is-active', on);
+          el.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+
+        // Freeze the inline SVG (SMIL) animations for reduced-motion users
+        if (reduceMotion) {
+          document.querySelectorAll('main svg').forEach((svg) => {
+            if (typeof svg.pauseAnimations === 'function') svg.pauseAnimations();
+          });
+        }
+
+        // 1. Slide 3: 4 Interactive Step Cards + SVG Subsystem Highlighting + Auto-Advancing Tour
         const stepCards = document.querySelectorAll('.interactive-step-card');
+        const stepCardGrid = document.getElementById('flow-step-cards');
         const liveStepStatus = document.getElementById('live-step-status');
+        const autoplayBtn = document.getElementById('flow-autoplay-btn');
+        const diagramScroller = document.getElementById('flow-diagram-scroller');
+        const diagramHint = document.getElementById('flow-diagram-hint');
         const microcapsules = document.querySelectorAll('.capture-microcapsule');
         const defaultCapsuleColors = ['#8e74c4', '#7d67ae', '#9f86d6', '#7d67ae', '#9f86d6', '#8e74c4', '#8e74c4'];
 
@@ -1417,9 +1433,29 @@
           '4': { el: document.getElementById('svg-box-oven'), filter: 'url(#glowAmber)', stroke: '#fde68a', width: '3.2' }
         };
 
+        // Horizontal center of each step's hardware, as a fraction of the 1060-wide viewBox
+        const stepFocusX = { '1': 0.32, '2': 0.32, '3': 0.555, '4': 0.78 };
+
         let currentStepIndex = 0;
         const stepOrder = ['1', '2', '3', '4'];
         let stepTimer = null;
+        let isPlaying = !reduceMotion;
+        let isInView = false;
+
+        // On narrow screens the diagram scrolls sideways: show the hint and keep the active stage in view
+        function diagramOverflows() {
+          return diagramScroller && diagramScroller.scrollWidth > diagramScroller.clientWidth + 1;
+        }
+
+        function scrollDiagramTo(stepId) {
+          if (!diagramOverflows()) return;
+          const target = diagramScroller.scrollWidth * (stepFocusX[stepId] || 0) - diagramScroller.clientWidth / 2;
+          diagramScroller.scrollTo({ left: Math.max(0, target), behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+
+        function updateDiagramHint() {
+          if (diagramHint) diagramHint.hidden = !diagramOverflows();
+        }
 
         function activateStep(stepId) {
           currentStepIndex = stepOrder.indexOf(String(stepId));
@@ -1428,10 +1464,10 @@
           // 1. Update Step Cards & Restart Progress Bar Animation
           stepCards.forEach((c) => {
             const isMatch = c.getAttribute('data-step') === String(stepId);
-            c.classList.remove('is-active');
+            setPressed(c, false);
             if (isMatch) {
               void c.offsetWidth; // trigger reflow to restart CSS progress bar
-              c.classList.add('is-active');
+              setPressed(c, true);
               if (liveStepStatus) {
                 const desc = c.getAttribute('data-step-desc');
                 if (desc) liveStepStatus.textContent = desc;
@@ -1481,34 +1517,68 @@
               cap.setAttribute('stroke', '#ece8f7');
             }
           });
+
+          if (isInView) scrollDiagramTo(String(stepId));
         }
 
-        function startStepTimer() {
+        // The tour only advances while playing and on screen; the progress bar mirrors that
+        function syncTimer() {
+          const running = isPlaying && isInView;
           if (stepTimer) clearInterval(stepTimer);
-          stepTimer = setInterval(() => {
-            const nextIndex = (currentStepIndex + 1) % stepOrder.length;
-            activateStep(stepOrder[nextIndex]);
-          }, 4500);
+          stepTimer = null;
+          if (stepCardGrid) stepCardGrid.classList.toggle('is-autoplaying', running);
+          if (running) {
+            activateStep(stepOrder[currentStepIndex]); // restart the active card's progress bar
+            stepTimer = setInterval(() => {
+              activateStep(stepOrder[(currentStepIndex + 1) % stepOrder.length]);
+            }, 4500);
+          }
+          if (autoplayBtn) autoplayBtn.textContent = isPlaying ? 'Pause tour' : 'Play tour';
         }
 
+        function setPlaying(on) {
+          isPlaying = on;
+          syncTimer();
+        }
+
+        // Choosing a step takes over from the tour
         stepCards.forEach((card) => {
           card.addEventListener('click', () => {
+            setPlaying(false);
             activateStep(card.getAttribute('data-step'));
-            startStepTimer();
           });
         });
 
         document.querySelectorAll('[data-svg-step]').forEach((svgGroup) => {
           svgGroup.addEventListener('click', (e) => {
             e.stopPropagation();
+            setPlaying(false);
             activateStep(svgGroup.getAttribute('data-svg-step'));
-            startStepTimer();
           });
         });
 
-        // Initialize Step 1 & start automatic cycle timer
+        if (autoplayBtn) {
+          autoplayBtn.addEventListener('click', () => setPlaying(!isPlaying));
+        }
+
+        // "In view" = the section crosses the middle half of the viewport (works however tall the section gets)
+        const flowSection = document.getElementById('technology');
+        if (flowSection && 'IntersectionObserver' in window) {
+          new IntersectionObserver((entries) => {
+            isInView = entries[0].isIntersecting;
+            syncTimer();
+          }, { rootMargin: '-25% 0px -25% 0px' }).observe(flowSection);
+        } else {
+          isInView = true;
+        }
+
+        if (diagramScroller && 'ResizeObserver' in window) {
+          new ResizeObserver(updateDiagramHint).observe(diagramScroller);
+        }
+        updateDiagramHint();
+
         activateStep('1');
-        startStepTimer();
+        syncTimer();
 
         // 3. Slide 4: Cartridge A-D Callout Selector + 4-Quadrant Image Grid Glow
         const calloutBtns = document.querySelectorAll('.cartridge-callout-btn');
@@ -1518,13 +1588,13 @@
         function activateCartridgePanel(panelId) {
           calloutBtns.forEach((b) => {
             const isMatch = b.getAttribute('data-panel') === panelId;
-            b.classList.toggle('is-active', isMatch);
+            setPressed(b, isMatch);
             if (isMatch && inspectorText) {
               inspectorText.innerHTML = '<strong style="color: var(--lilac-highlight);">Active Selection:</strong> ' + b.getAttribute('data-panel-text');
             }
           });
           quadrantBtns.forEach((q) => {
-            q.classList.toggle('is-active', q.getAttribute('data-quadrant') === panelId);
+            setPressed(q, q.getAttribute('data-quadrant') === panelId);
           });
         }
 
@@ -1582,8 +1652,7 @@
           btn.addEventListener('click', () => {
             const st = capStates[btn.getAttribute('data-cap-state')];
             if (!st) return;
-            capBtns.forEach((b) => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
+            capBtns.forEach((b) => setPressed(b, b === btn));
             if (simCore) simCore.setAttribute('fill', st.color);
             if (simLabel) simLabel.textContent = st.label;
             if (simSub) simSub.textContent = st.sub;
@@ -1602,8 +1671,7 @@
         catBtns.forEach((btn) => {
           btn.addEventListener('click', () => {
             const val = btn.getAttribute('data-cat');
-            catBtns.forEach((b) => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
+            catBtns.forEach((b) => setPressed(b, b === btn));
             catGroups.forEach((grp) => {
               const match = val === 'all' || grp.getAttribute('data-cat-group') === val;
               grp.style.display = match ? 'block' : 'none';
@@ -1625,14 +1693,16 @@
           const rawB = (7.88 * ratio).toFixed(2);
           const ch4B = (3.745 * ratio).toFixed(3);
           const co2Tons = Math.round(186614 * ratio).toLocaleString('en-US');
+          const cfmLabel = Number(cfm).toLocaleString('en-US') + ' CFM';
 
-          if (cfmDisplay) cfmDisplay.textContent = Number(cfm).toLocaleString('en-US') + ' CFM';
+          if (cfmDisplay) cfmDisplay.textContent = cfmLabel;
+          if (cfmRange) cfmRange.setAttribute('aria-valuetext', cfmLabel);
           if (rawScfEl) rawScfEl.textContent = rawB + 'B';
           if (ch4ScfEl) ch4ScfEl.textContent = ch4B + 'B';
           if (co2TonsEl) co2TonsEl.textContent = co2Tons;
 
           presetBtns.forEach((b) => {
-            b.classList.toggle('is-active', Number(b.getAttribute('data-cfm')) === Number(cfm));
+            setPressed(b, Number(b.getAttribute('data-cfm')) === Number(cfm));
           });
         }
 
@@ -1646,32 +1716,6 @@
             updateCfmCalc(val);
           });
         });
-
-        // 7. Click-to-Zoom Lightbox for Engineering Blueprints & Renders
-        const lightbox = document.getElementById('diagram-lightbox');
-        const lightboxImg = document.getElementById('diagram-lightbox-img');
-        const lightboxClose = document.getElementById('diagram-lightbox-close');
-
-        document.querySelectorAll('.zoomable-media').forEach((img) => {
-          img.addEventListener('click', () => {
-            if (lightbox && lightboxImg) {
-              lightboxImg.src = img.src;
-              lightboxImg.alt = img.alt;
-              lightbox.classList.add('is-open');
-            }
-          });
-        });
-
-        if (lightbox) {
-          lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox || e.target === lightboxClose) {
-              lightbox.classList.remove('is-open');
-            }
-          });
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') lightbox.classList.remove('is-open');
-          });
-        }
       })();
     </script>
   </main>
