@@ -829,6 +829,11 @@ h1, h2, h3, h4 {
   border-color: rgba(197, 176, 246, 0.4);
 }
 
+/* Spans both columns of the hero stats grid */
+.hero-glass-card--wide {
+  grid-column: 1 / -1;
+}
+
 .hero-glass-card--highlight {
   background: linear-gradient(145deg, rgba(125, 103, 174, 0.28) 0%, rgba(35, 22, 60, 0.75) 100%);
   border-color: rgba(197, 176, 246, 0.35);
@@ -932,7 +937,6 @@ h1, h2, h3, h4 {
 .grid-3 > *,
 .grid-4 > *,
 .split-layout > *,
-.pipeline-grid > *,
 .cta-banner__grid > *,
 .site-footer__main > *,
 .site-footer__cols > * {
@@ -1025,16 +1029,6 @@ h1, h2, h3, h4 {
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--primary);
-}
-
-.stat-card__unit {
-  display: inline-block;
-  margin-top: 0.25rem;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--brand);
 }
 
 .stat-card__label {
@@ -1174,6 +1168,30 @@ h1, h2, h3, h4 {
   color: var(--muted-foreground);
 }
 
+/* Numbered citation list at the end of a page */
+.sources-list {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+  list-style: decimal;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted-foreground);
+}
+
+.sources-list a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(125, 103, 174, 0.4);
+  text-underline-offset: 3px;
+}
+
+.sources-list a:hover {
+  text-decoration-color: currentColor;
+}
+
 /* Callout Banner */
 .callout-box {
   min-width: 0;
@@ -1194,6 +1212,13 @@ h1, h2, h3, h4 {
   background-color: var(--night);
   border-color: rgba(255, 255, 255, 0.15);
   color: #ffffff;
+}
+
+/* Caveats and limitations */
+.callout-box--amber {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+  color: #78350f;
 }
 
 .benchmark-bar__header {
@@ -1446,7 +1471,7 @@ h1, h2, h3, h4 {
   opacity: 1;
 }
 
-/* Gas Composition Bar & Molecular Showcase (Slide 2) */
+/* Gas Composition Bar (Why Landfill Gas) */
 .composition-bar {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -1489,35 +1514,6 @@ h1, h2, h3, h4 {
 .composition-bar__segment--co2 {
   background-color: var(--night);
   color: #ffffff;
-}
-
-.molecule-card {
-  position: relative;
-  overflow: hidden;
-  padding: 1.35rem;
-}
-
-@media (min-width: 640px) {
-  .molecule-card {
-    padding: 2rem;
-  }
-}
-
-.molecule-card__graphic {
-  height: 9.5rem;
-  border-radius: 1rem;
-  background: radial-gradient(circle at 50% 50%, rgba(125, 103, 174, 0.14) 0%, rgba(236, 232, 247, 0.4) 100%);
-  border: 1px solid var(--lavender);
-  display: grid;
-  place-items: center;
-  margin-bottom: 1.375rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.molecule-card__graphic--night {
-  background: radial-gradient(circle at 50% 50%, rgba(125, 103, 174, 0.35) 0%, #1d1233 100%);
-  border-color: rgba(197, 176, 246, 0.25);
 }
 
 /* Interactive Colorimetric Microcapsule Simulator (Slide 4) */
@@ -1596,6 +1592,14 @@ h1, h2, h3, h4 {
   transition: all 0.2s ease;
 }
 
+.capsule-stage-btn__dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
+}
+
 .capsule-stage-btn:hover {
   border-color: var(--brand);
   background-color: var(--muted);
@@ -1653,7 +1657,7 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-card);
 }
 
-/* LLNL Clustered Bar Chart (Environmental Page Slide 5) */
+/* Horizontal Bar Charts (Environmental Page) */
 .chart-card {
   padding: 1.25rem;
 }
@@ -1670,65 +1674,10 @@ h1, h2, h3, h4 {
   color: var(--primary);
 }
 
-.chart-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-top: 0.5rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--muted-foreground);
-}
-
-.chart-legend__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.chart-legend__swatch {
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 0.25rem;
-}
-
-.chart-groups {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.chart-group {
-  padding: 0.875rem 1rem;
-  border-radius: 1rem;
-  background-color: var(--background);
-  border: 1px solid var(--lavender);
-  transition: all 0.25s ease;
-}
-
-.chart-group:hover,
-.chart-group.is-highlighted {
-  border-color: var(--brand);
-  background-color: #f6f2fd;
-  box-shadow: var(--shadow-card);
-}
-
-.chart-group__label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--foreground);
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.75rem;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .chart-row {
   display: grid;
-  grid-template-columns: 11.5rem minmax(0, 1fr) 3rem;
+  /* Fixed value column keeps every track the same length, so bars stay to scale */
+  grid-template-columns: 11.5rem minmax(0, 1fr) 5rem;
   align-items: center;
   gap: 0.75rem;
   margin-top: 0.5rem;
@@ -1736,7 +1685,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 639px) {
   .chart-row {
-    grid-template-columns: minmax(0, 1fr) 2.75rem;
+    grid-template-columns: minmax(0, 1fr) 5rem;
     gap: 0.25rem 0.65rem;
   }
 
@@ -1774,43 +1723,12 @@ h1, h2, h3, h4 {
 }
 
 .chart-row__val {
+  white-space: nowrap;
   font-size: 0.875rem;
   font-weight: 800;
   color: var(--primary);
   text-align: right;
   font-variant-numeric: tabular-nums;
-}
-
-/* Case Study Pipeline Flow (Slide 6) */
-.pipeline-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-@media (min-width: 1024px) {
-  .pipeline-grid {
-    grid-template-columns: 1fr auto 1fr 1fr;
-    align-items: center;
-  }
-}
-
-.pipeline-arrow {
-  display: none;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 9999px;
-  background-image: var(--gradient-brand);
-  color: #ffffff;
-  box-shadow: var(--shadow-card);
-}
-
-@media (min-width: 1024px) {
-  .pipeline-arrow {
-    display: grid;
-  }
 }
 
 /* Pathogen Page: Watermark-Clean Image Container */
@@ -2199,20 +2117,7 @@ h1, h2, h3, h4 {
   color: #ffffff;
 }
 
-/* Animations */
-@keyframes pulse-ring {
-  0% { transform: scale(0.92); opacity: 0.75; }
-  50% { transform: scale(1.08); opacity: 0.3; }
-  100% { transform: scale(0.92); opacity: 0.75; }
-}
-
-.animate-pulse-ring {
-  animation: pulse-ring 3.5s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-/* Inline SVG (SMIL) animations are paused from each page's script */
+/* Reduced motion: inline SVG (SMIL) animations are paused from each page's script */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -2317,6 +2222,27 @@ h1, h2, h3, h4 {
   border: 3px solid var(--night);
   box-shadow: 0 0 0 4px rgba(166, 227, 216, 0.35), 0 4px 12px rgba(0, 0, 0, 0.4);
   cursor: grab;
+}
+
+.calc-assumptions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.calc-assumptions li {
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.calc-assumptions strong {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .cfm-preset-btn {
