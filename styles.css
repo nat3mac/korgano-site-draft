@@ -1103,6 +1103,27 @@ h1, h2, h3, h4 {
   color: #ffffff;
 }
 
+.media-frame--dark {
+  background-color: var(--night);
+  border-color: rgba(197, 176, 246, 0.25);
+}
+
+.cartridge-caption-bar {
+  margin-top: 0.875rem;
+  border-radius: 1.125rem;
+  border: 1px solid rgba(197, 176, 246, 0.25);
+  background-color: var(--night);
+  padding: 0.875rem 1.25rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  box-shadow: var(--shadow-card);
+  font-size: 0.8125rem;
+}
+
 /* 4-Quadrant Cartridge Image Grid (How It Works Section) */
 .cartridge-quadrant-grid {
   flex: 1;
@@ -1110,36 +1131,43 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 0.875rem;
-  padding: 1rem 1rem 5.25rem;
-  background-color: #ffffff;
+  gap: 1rem;
+  padding: 1.125rem;
+  background-color: var(--night);
 }
 
 .cartridge-quadrant {
   position: relative;
   overflow: hidden;
   border-radius: 0.875rem;
-  border: 2px solid var(--lavender);
-  background-color: var(--muted);
+  border: 2px solid rgba(197, 176, 246, 0.24);
+  background-color: #170e29;
   cursor: pointer;
   padding: 0;
-  opacity: 0.72;
+  opacity: 0.68;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  height: 100%;
+}
+
+@media (max-width: 1023px) {
+  .cartridge-quadrant {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .cartridge-quadrant:hover {
-  opacity: 0.92;
-  border-color: rgba(125, 103, 174, 0.6);
+  opacity: 0.9;
+  border-color: rgba(197, 176, 246, 0.65);
 }
 
 .cartridge-quadrant.is-active {
   opacity: 1;
   z-index: 1;
-  border-color: var(--brand);
+  border-color: var(--lilac-highlight);
   box-shadow:
-    0 0 0 3px rgba(125, 103, 174, 0.32),
-    0 0 26px rgba(159, 134, 214, 0.65),
-    0 10px 24px -6px rgba(74, 53, 112, 0.35);
+    0 0 0 3px rgba(197, 176, 246, 0.35),
+    0 0 28px rgba(159, 134, 214, 0.75),
+    0 10px 24px -6px rgba(0, 0, 0, 0.5);
 }
 
 .cartridge-quadrant > img {
@@ -1540,18 +1568,40 @@ h1, h2, h3, h4 {
 }
 
 /* Cartridge A-D Interactive Legend Cards */
+.cartridge-callout-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .cartridge-callout-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .cartridge-callout-btn {
+  height: 100%;
   text-align: left;
   width: 100%;
-  padding: 1.125rem 1.25rem;
+  padding: 1.25rem 1.25rem;
   display: flex;
   gap: 0.875rem;
-  align-items: flex-start;
+  align-items: center;
   cursor: pointer;
   border: 2px solid var(--lavender);
   background-color: var(--surface);
   border-radius: 1.125rem;
   transition: all 0.2s ease;
+}
+
+.cartridge-callout-btn__text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--foreground);
 }
 
 .cartridge-callout-btn:hover,

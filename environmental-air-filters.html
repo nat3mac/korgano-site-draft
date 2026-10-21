@@ -851,9 +851,9 @@
         </div>
 
         <div class="split-layout split-layout--stretch">
-          <!-- Left: Prototype Cartridge Photo Grid (A, B, C, D) + Overlaid Callout Banner -->
+          <!-- Left: Prototype Cartridge Photo Grid (A, B, C, D) + Caption Below -->
           <div style="display: flex; flex-direction: column;">
-            <div class="media-frame media-frame--overlay-caption">
+            <div class="media-frame media-frame--dark" style="flex: 1; display: flex; flex-direction: column;">
               <div class="cartridge-quadrant-grid" role="group" aria-label="Prototype filter cartridge panels A through D">
                 <button type="button" class="cartridge-quadrant is-active" data-quadrant="A" aria-label="Select Panel A: CO2 capture media integrated with a MERV 13 particulate layer">
                   <span class="cartridge-quadrant__badge">A</span>
@@ -887,40 +887,42 @@
                   />
                 </button>
               </div>
-              <div class="media-frame__caption media-frame__caption--overlay">
-                <span id="cartridge-inspector-text"><strong style="color: var(--lilac-highlight);">Active Selection:</strong> Panel A: CO₂ capture media integrated with a MERV 13 particulate layer</span>
-                <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem; flex-shrink: 0;">Panels A–D</span>
-              </div>
+            </div>
+
+            <!-- Caption Outside of and Below the Figure -->
+            <div class="cartridge-caption-bar">
+              <span id="cartridge-inspector-text"><strong style="color: var(--lilac-highlight);">Active Selection:</strong> Panel A: CO₂ capture media integrated with a MERV 13 particulate layer</span>
+              <span class="eyebrow eyebrow--teal" style="font-size: 0.6875rem; flex-shrink: 0;">Panels A–D</span>
             </div>
           </div>
 
           <!-- Right: Interactive A, B, C, D Selector + Interactive Colorimetric Capsule Simulator -->
           <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
-            <div class="grid-2" style="gap: 0.875rem;">
+            <div class="cartridge-callout-grid">
               <button type="button" class="cartridge-callout-btn is-active" data-panel="A" data-panel-text="Panel A: CO₂ capture media integrated with a MERV 13 particulate layer">
                 <span class="step-badge">A</span>
-                <span style="font-size: 0.9rem; font-weight: 600; line-height: 1.45; color: var(--foreground);">
+                <span class="cartridge-callout-btn__text">
                   CO₂ capture media integrated with a MERV 13 particulate layer
                 </span>
               </button>
 
               <button type="button" class="cartridge-callout-btn" data-panel="B" data-panel-text="Panel B: Gas-entry and gas-exit cartridge architecture">
                 <span class="step-badge">B</span>
-                <span style="font-size: 0.9rem; font-weight: 600; line-height: 1.45; color: var(--foreground);">
+                <span class="cartridge-callout-btn__text">
                   Gas-entry and gas-exit cartridge architecture
                 </span>
               </button>
 
               <button type="button" class="cartridge-callout-btn" data-panel="C" data-panel-text="Panel C: Visible sensor response after CO₂ absorption (color shift signals saturation)">
                 <span class="step-badge">C</span>
-                <span style="font-size: 0.9rem; font-weight: 600; line-height: 1.45; color: var(--foreground);">
+                <span class="cartridge-callout-btn__text">
                   Visible sensor response after CO₂ absorption
                 </span>
               </button>
 
               <button type="button" class="cartridge-callout-btn" data-panel="D" data-panel-text="Panel D: Sensor restored after heat-assisted CO₂ removal (ready for next capture cycle)">
                 <span class="step-badge">D</span>
-                <span style="font-size: 0.9rem; font-weight: 600; line-height: 1.45; color: var(--foreground);">
+                <span class="cartridge-callout-btn__text">
                   Sensor restored after heat-assisted CO₂ removal
                 </span>
               </button>
